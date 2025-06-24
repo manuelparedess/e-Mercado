@@ -23,6 +23,7 @@ import FavoritesPage from "../pages/User/FavoritesPage";
 import { getMyProducts } from "../api/user/getMyProducts";
 import MyProductsPage from "../pages/User/MyProductsPage";
 import UpdateProductPage from "../pages/Product/UpdateProductPage";
+import NotFound from "./routes/NotFound";
 
 
 export const router = createBrowserRouter([
@@ -119,5 +120,9 @@ export const router = createBrowserRouter([
                 ]
             }
         ]
+    },
+    {
+        path: "*",
+        element: <NotFound />
     }
 ])

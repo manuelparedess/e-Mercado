@@ -77,7 +77,7 @@ const UpdatePasswordPage = () => {
 
             <Divider sx={{ mb: 3, borderColor: '#0f6e33' }} />
 
-            <form onSubmit={handleSubmit}>
+            <form className='animate__animated animate__fadeIn animate__faster' onSubmit={handleSubmit}>
                 <Stack spacing={3}>
                     <TextField
                         label="Contraseña actual"

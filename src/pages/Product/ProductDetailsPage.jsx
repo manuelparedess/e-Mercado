@@ -16,6 +16,10 @@ import Reviews from "../../components/modules/Reviews";
 
 const ProductDetailsPage = () => {
 
+    useEffect(() => {
+        window.scrollTo({ top: 0 });
+    }, []);
+
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
 

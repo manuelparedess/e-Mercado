@@ -27,7 +27,7 @@ const Reviews = ({ product }) => {
                         ...rev,
                         user: creator.user || { name: 'Usuario', lastname: 'Eliminado' },
                     });
-                    if (creator.user.email === user.email) setAlreadyReviewed(true);
+                    if (user && creator.user.email === user.email) setAlreadyReviewed(true);
                 }
                 setReviews(updatedReviews);
             }
