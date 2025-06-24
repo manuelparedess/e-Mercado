@@ -24,6 +24,8 @@ import { getMyProducts } from "../api/user/getMyProducts";
 import MyProductsPage from "../pages/User/MyProductsPage";
 import UpdateProductPage from "../pages/Product/UpdateProductPage";
 import NotFound from "./routes/NotFound";
+import HelpPage from "../pages/User/HelpPage";
+import ContactPage from "../pages/User/ContactPage";
 
 
 export const router = createBrowserRouter([
@@ -74,6 +76,14 @@ export const router = createBrowserRouter([
                 element: <AnotherUserPage />,
                 loader: getUserById
             },
+            {
+                path: "/help",
+                element: <HelpPage />
+            },
+            {
+                path: "/contact",
+                element: <ContactPage />
+            }
         ]
 
     },

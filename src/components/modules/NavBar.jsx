@@ -57,7 +57,7 @@ const NavBar = () => {
                                         <ShoppingCartIcon />
                                     </Badge>
                                 </IconButton>
-                                <IconButton color="inherit">
+                                <IconButton component={Link} to="/help" color="inherit">
                                     <HelpOutlineIcon />
                                 </IconButton>
                                 <Divider orientation="vertical" flexItem sx={{ borderColor: '#0f6e33' }} />
@@ -92,6 +92,9 @@ const NavBar = () => {
                                 >
                                     Iniciar sesión
                                 </Button>
+                                <IconButton sx={{ml: 1}} component={Link} to="/help" color="inherit">
+                                    <HelpOutlineIcon />
+                                </IconButton>
                             </Box>
                         )
                 }
