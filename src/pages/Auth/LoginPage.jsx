@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import { GoogleLogin } from '@react-oauth/google';
 import {
     Box,
     TextField,
@@ -12,7 +13,7 @@ import { ProductContext } from '../../context/ProductContext';
 
 const LoginPage = () => {
 
-    const { handleLogin, error } = useContext(AuthContext);
+    const { handleLogin, handleLoginWithGoogle, error } = useContext(AuthContext);
     const { handleClearCart } = useContext(ProductContext);
     const navigate = useNavigate();
 
@@ -33,6 +34,12 @@ const LoginPage = () => {
         e.preventDefault();
         handleClearCart();
         const success = await handleLogin(formData);
+        if (success) navigate('/');
+    };
+
+    const handleGoogleLogin = (credentialResponse) => {
+        handleClearCart();
+        const success = handleLoginWithGoogle(credentialResponse.credential);
         if (success) navigate('/');
     };
 
@@ -119,7 +126,8 @@ const LoginPage = () => {
                         </Button>
                         <Divider sx={{ mt: 1 }}>o</Divider>
                     </form>
-                    <Button
+                    {/* <Button
+                        onClick={handleGoogleLogin}
                         variant="contained"
                         fullWidth
                         sx={{
@@ -139,7 +147,13 @@ const LoginPage = () => {
                             alt="Google logo"
                         />
                         <Typography sx={{ ml: 1 }}>Iniciar sesion con Google</Typography>
-                    </Button>
+                    </Button> */}
+                    <GoogleLogin
+                        onSuccess={(credentialResponse) => {
+                            handleGoogleLogin(credentialResponse);
+                        }}
+                        onError={() => console.log('Login Failed')}
+                    />
                 </Box>
             </Box>
 

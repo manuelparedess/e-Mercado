@@ -4,6 +4,7 @@ import { getUser } from '../api/user/getUser';
 
 import { Box, CircularProgress } from '@mui/material';
 import { register } from '../api/auth/register';
+import { loginWithGoogle } from '../api/auth/loginWithGoogle';
 
 
 export const AuthContext = createContext();
@@ -54,6 +55,20 @@ export const AuthProvider = ({ children }) => {
         }
     }
 
+    //login with google
+    const handleLoginWithGoogle = async (credential) => {
+        try {
+            setError(false);
+            const { token } = await loginWithGoogle(credential);
+            localStorage.setItem('token', token);
+            await handleGetUser(token);
+            return true;
+        } catch (error) {
+            setError(error.msg);
+            return false;
+        }
+    }
+
     //register
     const handleRegister = async (data) => {
         try {
@@ -81,6 +96,7 @@ export const AuthProvider = ({ children }) => {
         setUser,
         setReload,
         handleLogin,
+        handleLoginWithGoogle,
         handleRegister,
         handleLogout
     };

@@ -1,4 +1,5 @@
 import { createRoot } from 'react-dom/client'
+import { GoogleOAuthProvider } from '@react-oauth/google';
 
 //styles
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -17,14 +18,16 @@ import { UserProvider } from './context/UserContext.jsx';
 import { ProductProvider } from './context/ProductContext.jsx';
 
 createRoot(document.getElementById('root')).render(
-    <AuthProvider>
-        <UserProvider>
-            <ProductProvider>
-                <ThemeProvider theme={theme}>
-                    <CssBaseline />
-                    <RouterProvider router={router} />
-                </ThemeProvider>
-            </ProductProvider>
-        </UserProvider>
-    </AuthProvider>
+    <GoogleOAuthProvider clientId="309826722787-7q2118h6vtqjl0a09i0j5lt1mab2iiac.apps.googleusercontent.com">
+        <AuthProvider>
+            <UserProvider>
+                <ProductProvider>
+                    <ThemeProvider theme={theme}>
+                        <CssBaseline />
+                        <RouterProvider router={router} />
+                    </ThemeProvider>
+                </ProductProvider>
+            </UserProvider>
+        </AuthProvider>
+    </GoogleOAuthProvider>
 )

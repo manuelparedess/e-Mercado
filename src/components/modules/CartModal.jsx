@@ -1,10 +1,15 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import {
     Box,
     Typography,
     Divider,
     Button,
     Modal,
+    FormControl,
+    InputLabel,
+    Select,
+    MenuItem,
+    TextField,
 } from "@mui/material";
 import Swal from 'sweetalert2';
 import { ProductContext } from '../../context/ProductContext';
@@ -12,8 +17,9 @@ import { ProductContext } from '../../context/ProductContext';
 const CartModal = ({ openModal, setOpenModal }) => {
     const { cart, handleClearCart, handleUpdateStock } = useContext(ProductContext);
     const total = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
+    const [paymentMethod, setPaymentMethod] = useState("card");
 
-    const confirmPurchase = async() => {
+    const confirmPurchase = async () => {
         setOpenModal(false);
         Swal.fire({
             icon: 'success',
@@ -53,16 +59,62 @@ const CartModal = ({ openModal, setOpenModal }) => {
                 ))}
                 <Divider sx={{ my: 2 }} />
                 <Typography variant="h6">Total: ${total.toFixed(2)}</Typography>
-                <Box mt={3} display="flex" justifyContent="space-between">
-                    <Button onClick={() => setOpenModal(false)} variant="outlined" color='error'>
-                        Cancelar
-                    </Button>
-                    <Button onClick={confirmPurchase} variant="contained" color="primary">
-                        Confirmar
-                    </Button>
-                </Box>
+                <FormControl fullWidth sx={{ my: 2 }}>
+                    <InputLabel>Método de Pago</InputLabel>
+                    <Select
+                        value={paymentMethod}
+                        onChange={(e) => setPaymentMethod(e.target.value)}
+                        label="Método de Pago"
+                    >
+                        <MenuItem value="card">Tarjeta de crédito / débito</MenuItem>
+                        <MenuItem value="mercadopago">Mercado Pago</MenuItem>
+                    </Select>
+                </FormControl>
+
+                {paymentMethod === "card" && (
+                    <>
+                        <TextField label="Número de tarjeta" fullWidth sx={{ mb: 2 }} />
+                        <TextField label="Titular" fullWidth sx={{ mb: 2 }} />
+                        <Box sx={{ display: "flex", gap: 2 }}>
+                            <TextField label="Expira" placeholder="MM/AA" fullWidth />
+                            <TextField label="CVV" fullWidth />
+                        </Box>
+                    </>
+                )}
+
+                {paymentMethod === "mercadopago"
+                    ? (
+                        <Box mt={3}>
+                            <Button fullWidth onClick={() => setOpenModal(false)} variant="outlined" color="error" sx={{mb: 2}}>
+                                Cancelar
+                            </Button>
+                            <Button
+                                fullWidth
+                                onClick={() => {
+                                    window.open("https://www.mercadopago.com.", "_blank");
+                                    confirmPurchase();
+                                }}
+                                variant="contained"
+                                color="primary"
+                            >
+                                Pagar con Mercado Pago
+                            </Button>
+                        </Box>
+                    )
+                    : (
+                        <Box mt={3} display="flex" justifyContent="space-between">
+                            <Button onClick={() => setOpenModal(false)} variant="outlined" color="error">
+                                Cancelar
+                            </Button>
+                            <Button onClick={confirmPurchase} variant="contained" color="primary">
+                                Pagar con Tarjeta
+                            </Button>
+                        </Box>
+                    )
+                }
+
             </Box>
-        </Modal>
+        </Modal >
     )
 }
 
