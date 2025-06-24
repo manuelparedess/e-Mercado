@@ -28,7 +28,7 @@ export default function ImageCarousel({ images }) {
         >
             <Box
                 component="img"
-                src={`http://localhost:5000${images[current]}`}
+                src={`https://e-mercado.onrender.com${images[current]}`}
                 alt={`img-${current}`}
                 sx={{
                     width: "100%",

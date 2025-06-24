@@ -40,7 +40,7 @@ const CartPage = () => {
                                     <Box
                                         onClick={() => navigate(`/product/${item.product._id}`)}
                                         component="img"
-                                        src={`http://localhost:5000${item.product.images[0]}`}
+                                        src={`https://e-mercado.onrender.com${item.product.images[0]}`}
                                         alt={item.product.name}
                                         sx={{ width: 100, height: 100, objectFit: "cover", borderRadius: 2, mr: 2, cursor: 'pointer' }}
                                     />

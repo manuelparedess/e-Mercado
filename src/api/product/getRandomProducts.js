@@ -1,5 +1,5 @@
 export const getRandomProducts = async () => {
-	const url = 'http://localhost:5000/api/products/random';
+	const url = 'https://e-mercado.onrender.com/api/products/random';
 
 	const params = {
 		method: 'GET',

@@ -1,5 +1,5 @@
 export const getUser = async (token) => {
-	const url = 'http://localhost:5000/api/user/me';
+	const url = 'https://e-mercado.onrender.com/api/user/me';
 
 	const params = {
 		method: 'GET',

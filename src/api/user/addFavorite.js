@@ -1,5 +1,5 @@
 export const addFavorite = async (id) => {
-	const url = `http://localhost:5000/api/user/favorites/${id}`;
+	const url = `https://e-mercado.onrender.com/api/user/favorites/${id}`;
     const token = localStorage.getItem('token');
 
 	const params = {

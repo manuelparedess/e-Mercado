@@ -37,7 +37,7 @@ const ListItemProduct = ({ product }) => {
             >
                 <CardMedia
                     component="img"
-                    src={`http://localhost:5000${images[0]}`}
+                    src={`https://e-mercado.onrender.com${images[0]}`}
                     alt={name}
                     sx={{
                         width: 160,

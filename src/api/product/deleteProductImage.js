@@ -1,5 +1,5 @@
 export const deleteProductImage = async (id, newImages) => {
-	const url = `http://localhost:5000/api/products/images/${id}`;
+	const url = `https://e-mercado.onrender.com/api/products/images/${id}`;
     const data = {
         images: newImages
     }

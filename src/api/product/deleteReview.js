@@ -1,5 +1,5 @@
 export const deleteReview= async (id) => {
-	const url = `http://localhost:5000/api/products/review/${id}`;
+	const url = `https://e-mercado.onrender.com/api/products/review/${id}`;
     const token = localStorage.getItem('token');
 
 	const params = {

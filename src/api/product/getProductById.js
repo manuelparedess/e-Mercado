@@ -1,5 +1,5 @@
 export const getProductById = async ({ params }) => {
-    const response = await fetch(`http://localhost:5000/api/products/id/${params.id}`, {
+    const response = await fetch(`https://e-mercado.onrender.com/api/products/id/${params.id}`, {
 		method: 'GET',
 	});
     const data = await  response.json();
@@ -11,7 +11,7 @@ export const getProductById = async ({ params }) => {
 }
 
 export const getProductById2 = async (id) => {
-    const response = await fetch(`http://localhost:5000/api/products/id/${id}`, {
+    const response = await fetch(`https://e-mercado.onrender.com/api/products/id/${id}`, {
 		method: 'GET',
 	});
     const data = await  response.json();

@@ -1,5 +1,5 @@
 export const addReview = async (id, newRating, newText) => {
-	const url = `http://localhost:5000/api/products/review/${id}`;
+	const url = `https://e-mercado.onrender.com/api/products/review/${id}`;
     const data = {
 		rating: newRating,
 		text: newText

@@ -1,5 +1,5 @@
 export const deleteProduct = async (id) => {
-	const url = `http://localhost:5000/api/products/delete/${id}`;
+	const url = `https://e-mercado.onrender.com/api/products/delete/${id}`;
     const token = localStorage.getItem('token');
 
 	const params = {

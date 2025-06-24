@@ -1,5 +1,5 @@
 export const updateStock = async (id, stock) => {
-	const url = `http://localhost:5000/api/products/stock/${id}`;
+	const url = `https://e-mercado.onrender.com/api/products/stock/${id}`;
     const data = {
         stock
     }

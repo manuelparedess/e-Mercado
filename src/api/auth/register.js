@@ -1,5 +1,5 @@
 export const register = async (data) => {
-	const url = 'http://localhost:5000/api/auth/register';
+	const url = 'https://e-mercado.onrender.com/api/auth/register';
 
 	const params = {
 		method: 'POST',

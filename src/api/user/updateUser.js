@@ -1,5 +1,5 @@
 export const updateUser = async (data) => {
-	const url = 'http://localhost:5000/api/user/update';
+	const url = 'https://e-mercado.onrender.com/api/user/update';
     const token = localStorage.getItem('token');
 
 	const params = {

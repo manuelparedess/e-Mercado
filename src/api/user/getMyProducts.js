@@ -11,7 +11,7 @@ export const getMyProducts = async ({ request }) => {
 		}
 	};
 
-	const response = await fetch(`http://localhost:5000/api/products/me?page=${page}`, params);
+	const response = await fetch(`https://e-mercado.onrender.com/api/products/me?page=${page}`, params);
 	const result = await response.json();
 
 	if (response.status !== 200) throw result;

@@ -1,5 +1,5 @@
 export const updatePassword = async (data) => {
-	const url = 'http://localhost:5000/api/user/password/reset';
+	const url = 'https://e-mercado.onrender.com/api/user/password/reset';
     const token = localStorage.getItem('token');
 
 	const params = {
