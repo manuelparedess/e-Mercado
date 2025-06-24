@@ -12,6 +12,7 @@ import {
 import SearchIcon from "@mui/icons-material/Search";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import ProductCard from "../components/modules/ProductCard";
+import PublicityCard from "../components/modules/PublicityCard";
 
 const MainScreen = () => {
 
@@ -92,19 +93,7 @@ const MainScreen = () => {
                     </Box>
                 </Box>
 
-                <Card sx={{ mb: 6, boxShadow: 3 }}>
-                    <CardMedia
-                        component="img"
-                        height="200"
-                        image="https://via.placeholder.com/1200x200?text=Publicidad+destacada"
-                        alt="Publicidad"
-                    />
-                    <CardContent>
-                        <Typography variant="h6" fontWeight={600}>
-                            ¡Aprovechá nuestras ofertas de temporada!
-                        </Typography>
-                    </CardContent>
-                </Card>
+                <PublicityCard />
 
                 <Typography className='ff-noto-sans' variant="h3" sx={{ fontWeight: 'bold', color: 'white', mb: 3 }} gutterBottom>
                     Destacados

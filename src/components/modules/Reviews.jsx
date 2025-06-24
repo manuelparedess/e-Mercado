@@ -82,46 +82,54 @@ const Reviews = ({ product }) => {
                 Opiniones de usuarios
             </Typography>
             <Divider sx={{ mb: 3, borderColor: 'primary.main' }} />
-            <Paper sx={{ p: 3, mb: 4 }}>
-                <Typography variant="subtitle1" gutterBottom>
-                    Dejá tu reseña
-                </Typography>
-                <Rating
-                    value={newRating}
-                    onChange={(e, val) => setNewRating(val)}
-                    sx={{ mb: 2 }}
-                />
-                <TextField
-                    fullWidth
-                    multiline
-                    rows={3}
-                    placeholder="Escribí tu comentario..."
-                    value={newText}
-                    onChange={(e) => setNewText(e.target.value)}
-                    sx={{ mb: 2 }}
-                />
-                <Button
-                    variant="contained"
-                    onClick={handleReviewSubmit}
-                    disabled={!newText || newRating === 0}
-                >
-                    Enviar reseña
-                </Button>
-                {
-                    alreadyReviewed
-                        ? (
+
+            {
+                user
+                    ? (
+                        <Paper sx={{ p: 3, mb: 4 }}>
+                            <Typography variant="subtitle1" gutterBottom>
+                                Dejá tu reseña
+                            </Typography>
+                            <Rating
+                                value={newRating}
+                                onChange={(e, val) => setNewRating(val)}
+                                sx={{ mb: 2 }}
+                            />
+                            <TextField
+                                fullWidth
+                                multiline
+                                rows={3}
+                                placeholder="Escribí tu comentario..."
+                                value={newText}
+                                onChange={(e) => setNewText(e.target.value)}
+                                sx={{ mb: 2 }}
+                            />
                             <Button
-                                sx={{mx: 2}}
                                 variant="contained"
-                                color='error'
-                                onClick={handleDeleteReview}
+                                onClick={handleReviewSubmit}
+                                disabled={!newText || newRating === 0}
                             >
-                                Borrar reseña
+                                Enviar reseña
                             </Button>
-                        )
-                        : ''
-                }
-            </Paper>
+                            {
+                                alreadyReviewed
+                                    ? (
+                                        <Button
+                                            sx={{ mx: 2 }}
+                                            variant="contained"
+                                            color='error'
+                                            onClick={handleDeleteReview}
+                                        >
+                                            Borrar reseña
+                                        </Button>
+                                    )
+                                    : ''
+                            }
+                        </Paper>
+                    )
+                    : ''
+            }
+
 
             {reviews.length > 0 ? (
                 reviews.map((review, i) => (
