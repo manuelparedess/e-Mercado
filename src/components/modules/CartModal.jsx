@@ -39,7 +39,7 @@ const CartModal = ({ openModal, setOpenModal }) => {
                     top: "50%",
                     left: "50%",
                     transform: "translate(-50%, -50%)",
-                    width: 400,
+                    width: {xs: '100vw', sm: 400},
                     bgcolor: "background.paper",
                     boxShadow: 24,
                     borderRadius: 2,
@@ -102,14 +102,24 @@ const CartModal = ({ openModal, setOpenModal }) => {
                         </Box>
                     )
                     : (
-                        <Box mt={3} display="flex" justifyContent="space-between">
-                            <Button onClick={() => setOpenModal(false)} variant="outlined" color="error">
-                                Cancelar
-                            </Button>
-                            <Button onClick={confirmPurchase} variant="contained" color="primary">
-                                Pagar con Tarjeta
-                            </Button>
-                        </Box>
+                        <>
+                            <Box mt={3} display={{xs: 'none', sm: 'flex'}} justifyContent="space-between">
+                                <Button onClick={() => setOpenModal(false)} variant="outlined" color="error">
+                                    Cancelar
+                                </Button>
+                                <Button onClick={confirmPurchase} variant="contained" color="primary">
+                                    Pagar con Tarjeta
+                                </Button>
+                            </Box>
+                            <Box mt={3} display={{xs: 'block', sm: 'none'}} justifyContent="space-between">
+                                <Button onClick={() => setOpenModal(false)} variant="outlined" color="error" fullWidth>
+                                    Cancelar
+                                </Button>
+                                <Button onClick={confirmPurchase} variant="contained" color="primary" fullWidth sx={{mt: 1}}>
+                                    Pagar con Tarjeta
+                                </Button>
+                            </Box>
+                        </>
                     )
                 }
 

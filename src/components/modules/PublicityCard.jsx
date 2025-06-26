@@ -14,14 +14,14 @@ const PublicityCard = () => {
     }, []);
 
     return (
-        <Card sx={{ mb: 6, boxShadow: 3 }}>
+        <Card sx={{ mb: {sm: 4, md: 6}, boxShadow: 3, display: {xs: 'none', md: 'block'} }}>
             <CardMedia
                 component="img"
                 src={randomImage}
                 alt="Rotative publicity"
                 sx={{
                     width: "100%",
-                    height: { xs: 180, md: 280 },
+                    height: { sm: 220, md: 280 },
                     objectFit: "cover"
                 }}
             />

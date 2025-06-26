@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../../context/UserContext';
 import { ProductContext } from '../../context/ProductContext';
-import { Box, Divider, Typography } from '@mui/material';
+import { Box, Divider, Grid, Typography } from '@mui/material';
 import HeartBrokenIcon from '@mui/icons-material/HeartBroken';
 import ProductResult from '../../components/modules/ProductResult';
 
@@ -31,27 +31,19 @@ const FavoritesPage = () => {
     }, [favorites])
 
     return (
-        <Box sx={{ px: { xs: 2, md: 8 }, py: 4 }}>
+        <Box sx={{ px: { xs: 0.5, sm: 2, md: 6 }, py: 4 }}>
 
-            <Typography className='ff-noto-sans' variant="h4" sx={{ fontWeight: 'bold', mb: 1, color: '#1f8946' }}>
+            <Typography className='ff-noto-sans' variant="h4" sx={{ fontWeight: 'bold', mb: 1, color: '#1f8946', textAlign: {xs: 'center', md: 'left'}}}>
                 Favoritos
             </Typography>
             <Divider sx={{ mb: 4, borderColor: 'primary.main' }} />
 
             {favorites.length ? (
-                <Box
-                    sx={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        gap: 3,
-                        justifyContent: "center",
-                        mt: 2,
-                    }}
-                >
+                <Grid container spacing={{xs: 1.5, sm: 3}} sx={{justifyContent: 'space-around', mb: 3, px: { xs: 0, sm: 3, md: 5, xl: 0}}}>
                     {products.map((p) => (
                         <ProductResult key={p.product._id} product={p.product} />
                     ))}
-                </Box>
+                </Grid>
 
             ) : (
                 <Box

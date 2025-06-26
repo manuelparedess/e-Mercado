@@ -74,14 +74,14 @@ const ProductDetailsPage = () => {
     }
 
     return (
-        <Box sx={{ p: 4, maxWidth: 1200, mx: "auto" }}>
+        <Box sx={{ py: 4, px: {xs: 2, lg: 4}, maxWidth: 1200, mx: "auto" }}>
             <Grid container spacing={4} sx={{ backgroundColor: '#fff', boxShadow: 2, p: 2, borderRadius: 2, justifyContent: 'center' }}>
                 {/* Carrousel */}
-                <Box className="animate__animated animate__backInLeft" sx={{ width: '40%' }}>
+                <Grid className="animate__animated animate__backInLeft" item size={{ md: 5, lg: 6}}>
                     <ImageCarrousel images={images} />
-                </Box>
+                </Grid>
 
-                <Grid className="animate__animated animate__backInRight" item xs={12} md={6} sx={{ p: 4, border: '1px solid rgb(227, 227, 227)', borderRadius: 5 }}>
+                <Grid className="animate__animated animate__backInRight" item size={{ md: 7, lg: 6}} sx={{ p: 4, border: '1px solid rgb(227, 227, 227)', borderRadius: 5 }}>
                     <Typography variant="h4" fontWeight={700} gutterBottom>
                         {name}
                     </Typography>

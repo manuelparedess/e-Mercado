@@ -8,12 +8,15 @@ import {
     Stack,
     Alert,
     Box,
+    Grid,
 } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContext";
 import Swal from 'sweetalert2';
 import FavoriteButton from "../common/FavoriteButton";
 import { AuthContext } from "../../context/AuthContext";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
 
 const ProductResult = ({ product }) => {
 
@@ -32,7 +35,7 @@ const ProductResult = ({ product }) => {
 
     const handleAdd = (e) => {
         e.stopPropagation();
-        if(user === null) {
+        if (user === null) {
             navigate('/login');
             return;
         }
@@ -53,70 +56,90 @@ const ProductResult = ({ product }) => {
     }
 
     return (
-        <Card
-            onClick={() => navigate(`/product/${product._id}`)}
-            sx={{
-                width: '45%',
-                display: "flex",
-                flexDirection: "row",
-                alignItems: "flex-start",
-                p: 2,
-                borderRadius: 3,
-                boxShadow: 2,
-                mb: 3,
-                cursor: 'pointer'
-            }}
-        >
-            <CardMedia
-                component="img"
-                src={`https://e-mercado.onrender.com${images[0]}`}
-                alt={name}
+        <Grid item size={{ xs: 12, lg: 6 }}>
+            <Card
+                onClick={() => navigate(`/product/${product._id}`)}
                 sx={{
-                    width: 160,
-                    height: 160,
-                    objectFit: "cover",
-                    borderRadius: 2,
+                    height: '100%',
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: {xs: 'center', md: "flex-start"},
+                    p: 2,
+                    px: {xs: 0.5, sm: 2},
+                    borderRadius: 3,
+                    boxShadow: 2,
+                    cursor: 'pointer'
                 }}
-            />
+            >
+                <CardMedia
+                    component="img"
+                    src={`https://e-mercado.onrender.com${images[0]}`}
+                    alt={name}
+                    sx={{
+                        width: { xs: 110, sm: 150, xl: 160 },
+                        height: { xs: 110, sm: 150, xl: 160 },
+                        objectFit: "cover",
+                        borderRadius: 2,
+                    }}
+                />
 
-            <CardContent sx={{ flex: 1, ml: 3, p: 0 }}>
-                <Typography variant="h6" fontWeight={700} gutterBottom>
-                    {name}
-                </Typography>
-
-                <Typography variant="body2" color="text.secondary" paragraph>
-                    {description}
-                </Typography>
-
-                <Stack direction="row" spacing={3} alignItems="center" sx={{ mb: 1 }}>
-                    <Typography variant="body2" color="text.secondary">
-                        Categoría: <strong>{category}</strong>
+                <CardContent sx={{ flex: 1, ml: 3, p: 0 }}>
+                    <Typography variant="h6" fontWeight={700} gutterBottom sx={{mb: 0}}>
+                        {name}
                     </Typography>
-                    <Typography variant="body2" color="text.secondary">
-                        Stock: <strong>{stockAvaiable}</strong>
-                    </Typography>
-                </Stack>
 
-                <Stack direction="row" justifyContent="space-between" alignItems="center">
-                    <Typography variant="h6" color="primary">
-                        ${price}
+                    <Typography variant="body2" color="text.secondary" sx={{mb: {xs: 0.5, sm: 1.5}}}>
+                        {description}
                     </Typography>
-                    <Box sx={{ display: 'flex', gap: 1 }}>
-                        <FavoriteButton product={product} />
-                        <Button variant="contained" color="primary" onClick={handleAdd}>
+
+                    <Stack direction="row" spacing={3} alignItems="center" sx={{ mb: 1 }}>
+                        <Typography variant="body2" color="text.secondary">
+                            Categoría: <strong>{category}</strong>
+                        </Typography>
+                        <Typography variant="body2" color="text.secondary">
+                            Stock: <strong>{stockAvaiable}</strong>
+                        </Typography>
+                        <Typography variant="h6" color="primary" sx={{ display: { xs: 'none', lg: 'flex', xl: 'none' } }}>
+                            ${price}
+                        </Typography>
+                    </Stack>
+
+                    <Stack direction="row" justifyContent="space-between" alignItems="center" sx={{ display: { xs: 'flex', lg: 'none', xl: 'flex' } }}>
+                        <Typography variant="h6" color="primary">
+                            ${price}
+                        </Typography>
+                        <Box sx={{ display: {xs: 'none', sm: 'flex'}, gap: 1 }}>
+                            <FavoriteButton product={product} />
+                            <Button variant="contained" color="primary" onClick={handleAdd}>
+                                Agregar al carrito
+                            </Button>
+                        </Box>
+                    </Stack>
+                    <Box sx={{ display: { xs: 'flex', sm: 'none', lg: 'flex', xl: 'none' }, gap: 1, mt: {xs: 2, sm: 0} }}>
+                        <Button variant="contained" color="primary" onClick={handleAdd} sx={{ display: { xs: 'none', sm: 'flex'}}}>
                             Agregar al carrito
                         </Button>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            size="small"
+                            sx={{ alignSelf: "flex-start", display: { xs: 'flex', sm: 'none' }} }
+                            onClick={handleAdd}
+                        >
+                            Agregar <ShoppingCartIcon size='small' />
+                        </Button>
+                        <FavoriteButton product={product} />
                     </Box>
-                </Stack>
-                {
-                    stockAvaiable == 0
-                        ? (
-                            <Alert severity='error'>Sin stock</Alert>
-                        )
-                        : ''
-                }
-            </CardContent>
-        </Card>
+                    {
+                        stockAvaiable == 0
+                            ? (
+                                <Alert severity='error'>Sin stock</Alert>
+                            )
+                            : ''
+                    }
+                </CardContent>
+            </Card>
+        </Grid>
     );
 };
 

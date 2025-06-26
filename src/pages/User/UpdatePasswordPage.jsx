@@ -63,15 +63,16 @@ const UpdatePasswordPage = () => {
         <Box
             sx={{
                 maxWidth: "500px",
-                mx: "auto",
+                mx: { xs: 3, sm: "auto" },
                 mt: 8,
+                mb: 5,
                 p: 4,
                 bgcolor: "#fff",
                 borderRadius: 4,
                 boxShadow: 3
             }}
         >
-            <Typography variant="h4" fontWeight={700} gutterBottom color="primary">
+            <Typography variant="h4" fontWeight={700} gutterBottom color="primary" sx={{ textAlign: { xs: 'center', md: 'left' } }}>
                 Cambiar Contraseña
             </Typography>
 

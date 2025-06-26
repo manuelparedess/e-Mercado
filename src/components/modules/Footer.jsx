@@ -10,19 +10,19 @@ const Footer = () => {
                 pt: 3,
                 pb: 5,
                 px: 2,
-                mt: 10,
+                mt: {xs: 5, lg: 8},
                 backgroundColor: '#fff',
                 textAlign: 'center',
             }}
         >
             <Stack
                 direction="row"
-                spacing={3}
+                spacing={{xs: 3, sm: 5, md: 8, lg: 10, xl: 15}}
                 justifyContent="center"
                 alignItems="center"
                 flexWrap="wrap"
             >
-                <Typography variant="body2" color="text.secondary">
+                <Typography variant="body2" color="text.secondary" sx={{display: {xs: 'none', sm: 'block'}}}>
                     Created by Manuel Paredes
                 </Typography>
                 <Link
@@ -53,6 +53,9 @@ const Footer = () => {
                     Server Repository
                 </Link>
             </Stack>
+            <Typography variant="body2" color="text.secondary" sx={{display: {xs: 'block', sm: 'none'}, pt: 2}}>
+                Created by Manuel Paredes
+            </Typography>
         </Box>
     )
 }

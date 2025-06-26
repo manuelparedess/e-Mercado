@@ -7,3 +7,7 @@ body {
 .ff-noto-sans {
     font-family: "Noto Sans", sans-serif !important;
 }
+
+.nav-form {
+    width: 100%;
+}

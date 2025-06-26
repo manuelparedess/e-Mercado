@@ -90,9 +90,9 @@ const UpdateProductPage = () => {
     };
 
     return (
-        <Box className='animate__animated animate__fadeIn animate__faster' sx={{ maxWidth: 600, mx: 'auto', mt: 4, p: 3, borderRadius: '15px', boxShadow: '15', backgroundColor: '#fff' }}>
+        <Box className='animate__animated animate__fadeIn animate__faster' sx={{ maxWidth: 600, mx: {xs: 1.5, sm: 'auto'}, mt: 4, p: 3, borderRadius: '15px', boxShadow: '15', backgroundColor: '#fff' }}>
 
-            <Typography className='ff-noto-sans' variant="h4" sx={{ fontWeight: 'bold', mb: 1, color: '#1f8946' }}>
+            <Typography className='ff-noto-sans' variant="h4" sx={{ fontWeight: 'bold', mb: 1, color: '#1f8946', textAlign: {xs: 'center', md: 'left'} }}>
                 Editar Producto
             </Typography>
             <Divider sx={{ borderColor: 'primary.main' }} />

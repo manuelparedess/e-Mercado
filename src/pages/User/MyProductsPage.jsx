@@ -1,4 +1,4 @@
-import { Box, Divider, Typography } from '@mui/material';
+import { Box, Divider, Grid, Typography } from '@mui/material';
 import React, { useState } from 'react'
 import { useLoaderData } from 'react-router-dom';
 import Pagination from '../../components/common/Pagination';
@@ -10,28 +10,20 @@ const MyProductsPage = () => {
     const { info, results } = useLoaderData();
 
     return (
-        <Box sx={{ px: { xs: 2, md: 8 }, py: 4 }}>
+        <Box sx={{ px: { xs: 0.5, sm: 2, md: 6 }, py: 4 }}>
 
-            <Typography className='ff-noto-sans' variant="h4" sx={{ fontWeight: 'bold', mb: 1, color: '#1f8946' }}>
+            <Typography className='ff-noto-sans' variant="h4" sx={{ fontWeight: 'bold', mb: 1, color: '#1f8946', textAlign: {xs: 'center', md: 'left'} }}>
                 Mis productos
             </Typography>
             <Divider sx={{ mb: 4, borderColor: 'primary.main' }} />
 
             {results.length ? (
                 <>
-                    <Box
-                        sx={{
-                            display: "flex",
-                            flexWrap: "wrap",
-                            gap: 3,
-                            justifyContent: "center",
-                            mt: 2,
-                        }}
-                    >
+                    <Grid container spacing={{xs: 1.5, sm: 3}} sx={{justifyContent: 'space-around', mb: 3, px: { xs: 0, sm: 3, xl: 0}}}>
                         {results.map((product) => (
                             <ListItemProduct product={product} key={product._id} />
                         ))}
-                    </Box>
+                    </Grid>
                     <Pagination pagination={info} />
                 </>
             ) : (

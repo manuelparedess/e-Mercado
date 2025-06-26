@@ -68,21 +68,21 @@ const UserPage = () => {
                 sx={{
                     mt: 5,
                     maxWidth: "800px",
-                    mx: "auto",
+                    mx: { xs: 2, md: "auto" },
                     p: 4,
                     bgcolor: "#f9f9f9",
                     borderRadius: 4,
                     boxShadow: 3,
                 }}
             >
-                <Typography variant="h4" fontWeight={700} gutterBottom color="primary">
+                <Typography variant="h4" fontWeight={700} gutterBottom color="primary" sx={{ textAlign: { xs: 'center', md: 'left' } }}>
                     Perfil del Usuario
                 </Typography>
 
                 <Divider sx={{ mb: 4, borderColor: '#0f6e33' }} />
 
                 <Grid container spacing={4}>
-                    <Grid item xs={12} sm={6}>
+                    <Grid item size={{ xs: 12, sm: 6, md: 3 }}>
                         <Stack direction="row" alignItems="center" spacing={1}>
                             <PersonIcon color="primary" />
                             <Typography variant="subtitle2" color="text.secondary">
@@ -112,23 +112,22 @@ const UserPage = () => {
                                     </Typography>
                                 )
                         }
-                        <Grid item xs={12} sm={6}>
-                            {isEditing ? (
-                                <TextField
-                                    label="Apellido"
-                                    name="lastname"
-                                    value={formData.lastname}
-                                    onChange={handleChange}
-                                    fullWidth
-                                    margin="dense"
-                                    variant="standard"
-                                />
-                            ) : null}
-                        </Grid>
                     </Grid>
+                    {isEditing ? (
+                        <Grid item size={{ xs: 12, sm: 6, md: 3 }} sx={{ display: 'flex', alignItems: 'end'}}>
+                            <TextField
+                                label="Apellido"
+                                name="lastname"
+                                value={formData.lastname}
+                                onChange={handleChange}
+                                fullWidth
+                                margin="dense"
+                                variant="standard"
+                            />
+                        </Grid>
+                    ) : null}
 
-
-                    <Grid item xs={12} sm={6}>
+                    <Grid item size={{ xs: 12, sm: 6, md: 'grow' }} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
                         <Stack direction="row" alignItems="center" spacing={1}>
                             <MailOutlineIcon color="primary" />
                             <Typography variant="subtitle2" color="text.secondary">
@@ -152,16 +151,16 @@ const UserPage = () => {
                     </Grid>
 
                     {/* Dirección */}
-                    <Grid item xs={12}>
-                        <Stack direction="row" alignItems="center" spacing={1}>
-                            <LocationOnIcon color="primary" />
-                            <Typography variant="subtitle2" color="text.secondary">
-                                Dirección
-                            </Typography>
-                        </Stack>
-                        {isEditing
-                            ? (
-                                <Stack direction="row" spacing={2} mt={1}>
+                    {isEditing
+                        ? (
+                            <Grid item size={{ xs: 12 }}>
+                                <Stack direction="row" alignItems="center" spacing={1}>
+                                    <LocationOnIcon color="primary" />
+                                    <Typography variant="subtitle2" color="text.secondary">
+                                        Dirección
+                                    </Typography>
+                                </Stack>
+                                <Stack direction={{xs: 'column', md: 'row'}} spacing={2} mt={1}>
                                     <TextField
                                         label="Calle"
                                         name="address.street"
@@ -184,23 +183,36 @@ const UserPage = () => {
                                         fullWidth
                                     />
                                 </Stack>
-                            ) : (address.street || address.city || address.country) ? (
-                                <Typography variant="body1" mt={0.5}>
-                                    {address.street}, {address.city}, {address.country}
-                                </Typography>
-                            ) : (
-                                <Typography color="text.secondary" mt={0.5}>
-                                    No se proporcionó dirección.
-                                </Typography>
-                            )
-                        }
+                            </Grid>
 
-                    </Grid>
+                        ) : (
+                            <Grid item size={{ xs: 12, md: 6 }}>
+                                <Stack direction="row" alignItems="center" spacing={1}>
+                                    <LocationOnIcon color="primary" />
+                                    <Typography variant="subtitle2" color="text.secondary">
+                                        Dirección
+                                    </Typography>
+                                </Stack>
+                                {
+                                    (address.street || address.city || address.country) ? (
+                                        <Typography variant="body1" mt={0.5}>
+                                            {address.street}, {address.city}, {address.country}
+                                        </Typography>
+                                    ) : (
+                                        <Typography color="text.secondary" mt={0.5}>
+                                            No se proporcionó dirección.
+                                        </Typography>
+                                    )
+
+                                }
+                            </Grid>
+                        )
+                    }
+
                 </Grid>
-
                 <Box mt={4}>
                     {isEditing ? (
-                        <Stack direction="row" spacing={2}>
+                        <Stack direction={{xs: 'column', sm: 'row'}} spacing={2}>
                             <Button variant="contained" color="primary" onClick={handleSave}>
                                 Guardar cambios
                             </Button>
@@ -228,10 +240,11 @@ const UserPage = () => {
                 <Typography variant="caption" color="text.secondary">
                     Datos del usuario generados para fines de demostración. © {new Date().getFullYear()}
                 </Typography>
-            </Box>
+                ,
+            </Box >
             <Box mt={3} display="flex" justifyContent="center">
                 <Button
-                    component={Link} 
+                    component={Link}
                     to="/user/products"
                     variant="text"
                     sx={{
@@ -249,6 +262,7 @@ const UserPage = () => {
         </>
     );
 }
+
 
 
 export default UserPage;

@@ -14,7 +14,7 @@ const CategoryCard = ({ category }) => {
         <Paper
             onClick={() => handleCategoryClick()}
             sx={{
-                width: '30%',
+                width: {xs: '45%', sm: '30%'},
                 p: 4,
                 textAlign: "center",
                 cursor: "pointer",

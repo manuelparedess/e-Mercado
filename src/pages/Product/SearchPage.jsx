@@ -21,7 +21,7 @@ const SearchPage = () => {
 
     return (
 
-        <Box sx={{ px: { xs: 2, md: 6 }, py: 4 }}>
+        <Box sx={{ px: { xs: 0.5, sm: 2, md: 6 }, pt: { xs: 0, lg: 4 } }}>
             <Box sx={{ display: "flex", justifyContent: 'center', gap: 2 }}>
                 <TextField
                     onChange={(e) => setSearchState(e.target.value)}
@@ -31,7 +31,8 @@ const SearchPage = () => {
                     sx={{
                         backgroundColor: '#fff',
                         borderRadius: 1,
-                        width: '30%'
+                        width: '30%',
+                        display: { xs: 'none', lg: 'flex'}
                     }}
                     slotProps={{
                         input: {
@@ -42,20 +43,27 @@ const SearchPage = () => {
 
                 <Button
                     variant="outlined"
-                    sx={{ fontWeight: 'bold', px: 4}}
+                    sx={{ fontWeight: 'bold', px: 4, display: { xs: 'none', lg: 'flex'}}}
                     onClick={handleSearch}
                 >
                     Buscar
                 </Button>
             </Box>
 
-            <Typography className='ff-noto-sans' variant="h4" sx={{ fontWeight: 'bold', color: 'white', my: 4 }} gutterBottom>
+            <Typography className='ff-noto-sans' variant="h4" sx={{ fontWeight: 'bold', color: 'white', my: 4, display: { xs: 'none', md: 'block'} }} gutterBottom>
                 Resultados para:{' '}
                 <Typography component="span" variant="h5" sx={{ color: 'primary.main' }}>
                     {q}
                 </Typography>
             </Typography>
 
+            <Typography className='ff-noto-sans' variant="h5" sx={{ fontWeight: 'bold', color: 'white', my: 2, px: 2, display: { xs: 'block', md: 'none'} }} gutterBottom>
+                Resultados para:{' '}
+                <Typography component="span" variant="h6" sx={{ color: 'primary.main' }}>
+                    {q}
+                </Typography>
+            </Typography>
+            
             {info.count === 0 ? (
                 <Box
                     sx={{
@@ -75,19 +83,11 @@ const SearchPage = () => {
                     </Typography>
                 </Box>
             ) : (
-                <Box
-                    sx={{
-                        display: "flex",
-                        flexWrap: "wrap",
-                        gap: 3,
-                        justifyContent: "center",
-                        mt: 2,
-                    }}
-                >
+                <Grid container spacing={{xs: 1.5, sm: 3}} sx={{justifyContent: 'space-around', mb: 3, px: { xs: 0, sm: 3, md: 5, xl: 0}}}>
                     {results.map((product) => (
                         <ProductResult key={product._id} product={product} />
                     ))}
-                </Box>
+                </Grid>
             )}
             <Pagination pagination={info} /> 
         </Box>

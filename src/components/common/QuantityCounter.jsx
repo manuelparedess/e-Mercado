@@ -32,9 +32,8 @@ const QuantityCounter = ({ product, initial }) => {
                 alignItems: 'center',
                 border: '1px solid #ccc',
                 borderRadius: 2,
-                width: 120,
-                height: 40,
-                overflow: 'hidden',
+                width: {xs: 90, md: 120},
+                height: { xs: 35, sm: 40},
                 backgroundColor: '#f9f9f9',
             }}
         >

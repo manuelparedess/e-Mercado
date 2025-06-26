@@ -15,6 +15,7 @@ const ContactPage = () => {
     return (
         <Box
             sx={{
+                mt: 3,
                 minHeight: "50vh",
                 display: "flex",
                 justifyContent: "center",

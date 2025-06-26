@@ -6,23 +6,26 @@ import {
     Grid,
     Button,
     Paper,
+    Stack,
+    IconButton,
 } from "@mui/material";
 import { ProductContext } from "../../context/ProductContext";
 import QuantityCounter from "../../components/common/QuantityCounter";
 import CartModal from "../../components/modules/CartModal";
 import { useNavigate } from "react-router-dom";
+import CloseIcon from '@mui/icons-material/Close';
 
 const CartPage = () => {
 
     const { cart, handleRemoveInCart } = useContext(ProductContext);
-    const total = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0 );
+    const total = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
 
     const [openModal, setOpenModal] = useState(false);
     const navigate = useNavigate();
 
     return (
-        <Box sx={{ maxWidth: 1000, mx: "auto", p: 4 }}>
-            <Typography className='ff-noto-sans' variant="h4" sx={{ fontWeight: 'bold', mb: 1, color: '#1f8946' }}>
+        <Box sx={{ maxWidth: 1000, mx: { xs: 0, sm: "auto" }, pt: 4, px: { xs: 1, sm: 4 } }}>
+            <Typography className='ff-noto-sans' variant="h4" sx={{ fontWeight: 'bold', mb: 1, color: '#1f8946', textAlign: { xs: 'center', md: 'left' } }}>
                 Carrito de Compras
             </Typography>
             <Divider sx={{ mb: 4, borderColor: 'primary.main' }} />
@@ -35,14 +38,31 @@ const CartPage = () => {
                 <>
                     <Grid container spacing={3}>
                         {cart.map((item) => (
-                            <Grid item size={12} key={item.product._id}>
-                                <Paper sx={{ p: 2, display: "flex", alignItems: "center" }}>
+                            <Grid item size={12} key={item.product._id} >
+                                <Paper sx={{ p: 2, display: "flex", alignItems: "center", position: {xs: 'relative', sm: 'static'} }}>
+                                    <IconButton
+                                        size="small"
+                                        onClick={() => handleRemoveInCart(item.product._id)}
+                                        sx={{
+                                            display: {xs: 'block', sm: 'none'},
+                                            position: "absolute",
+                                            top: 8,
+                                            right: 8,
+                                            color: 'error.main',
+                                            backgroundColor: 'rgba(255,255,255,0.8)',
+                                            '&:hover': {
+                                                backgroundColor: 'rgba(255,255,255,1)',
+                                            }
+                                        }}
+                                    >
+                                        <CloseIcon />
+                                    </IconButton>
                                     <Box
                                         onClick={() => navigate(`/product/${item.product._id}`)}
                                         component="img"
                                         src={`https://e-mercado.onrender.com${item.product.images[0]}`}
                                         alt={item.product.name}
-                                        sx={{ width: 100, height: 100, objectFit: "cover", borderRadius: 2, mr: 2, cursor: 'pointer' }}
+                                        sx={{ width: {xs: 80, sm: 100}, height: 100, objectFit: "cover", borderRadius: 2, mr: 2, cursor: 'pointer' }}
                                     />
                                     <Box sx={{ flexGrow: 1 }}>
                                         <Typography variant="h6">{item.product.name}</Typography>
@@ -57,7 +77,7 @@ const CartPage = () => {
                                     <Button
                                         variant="outlined"
                                         color="error"
-                                        sx={{ml: 3}}
+                                        sx={{ ml: { sm: 1, md: 3 }, display: { xs: 'none', sm: 'block' } }}
                                         onClick={() => handleRemoveInCart(item.product._id)}
                                     >
                                         Eliminar

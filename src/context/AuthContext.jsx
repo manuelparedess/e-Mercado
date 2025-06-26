@@ -94,6 +94,7 @@ export const AuthProvider = ({ children }) => {
         user,
         error,
         setUser,
+        setError,
         setReload,
         handleLogin,
         handleLoginWithGoogle,

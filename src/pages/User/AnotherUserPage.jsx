@@ -23,14 +23,14 @@ const AnotherUserPage = () => {
                 sx={{
                     mt: 5,
                     maxWidth: "800px",
-                    mx: "auto",
+                    mx: { xs: 2, md: "auto" },
                     p: 4,
                     bgcolor: "#f9f9f9",
                     borderRadius: 4,
                     boxShadow: 3,
                 }}
             >
-                <Typography variant="h4" fontWeight={700} gutterBottom color="primary">
+                <Typography variant="h4" fontWeight={700} gutterBottom color="primary" sx={{ textAlign: { xs: 'center', md: 'left' } }}>
                     Perfil del Usuario
                 </Typography>
 
