@@ -1,6 +1,7 @@
 import React from 'react'
-import NavBar from '../components/modules/NavBar'
 import { Outlet } from 'react-router-dom'
+
+import NavBar from '../components/modules/NavBar'
 import Footer from '../components/modules/Footer'
 import { Box } from '@mui/material'
 
@@ -15,7 +16,7 @@ const Layout = () => {
                 }}
             >
                 <NavBar />
-                {/* Contenido principal */}
+                {/* Main content */}
                 <Box sx={{ flex: 1 }}>
                     <Outlet />
                 </Box>

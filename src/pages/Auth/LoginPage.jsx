@@ -1,15 +1,11 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { GoogleLogin } from '@react-oauth/google';
-import {
-    Box,
-    TextField,
-    Button,
-    Typography,
-    Divider,
-} from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
+import { GoogleLogin } from '@react-oauth/google';
+
 import { AuthContext } from '../../context/AuthContext';
 import { ProductContext } from '../../context/ProductContext';
+
+import { Box, TextField, Button, Typography, Divider } from '@mui/material';
 import Swal from 'sweetalert2';
 
 

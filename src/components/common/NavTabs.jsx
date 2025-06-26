@@ -1,15 +1,14 @@
 import React, { useEffect, useState } from 'react'
-import {
-    Tabs,
-    Tab,
-} from '@mui/material';
 import { Link, useLocation } from 'react-router-dom';
+import { Tabs, Tab } from '@mui/material';
 
 const NavTabs = () => {
 
     const { pathname } = useLocation();
+
     const [value, setValue] = useState(0);
     const tabPaths = ['/', '/contact', '/categories', '/product/sell', '/category']
+    
     useEffect(() => {
         if(tabPaths.includes(pathname)) {
             const currentTab = tabPaths.findIndex(tab => tab === pathname);

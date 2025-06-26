@@ -1,34 +1,26 @@
 import React, { useContext, useState } from 'react'
-import { ExpandLess, ExpandMore } from '@mui/icons-material';
-import {
-    Drawer, List, ListItem, ListItemButton, ListItemText,
-    Stack, Accordion,
-    AccordionSummary,
-    Typography,
-    AccordionDetails,
-    Collapse,
-    Box,
-    Button,
-    IconButton,
-    Badge,
-    Divider
-} from '@mui/material';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import { AuthContext } from '../../context/AuthContext';
+import { UserContext } from '../../context/UserContext';
+import { ProductContext } from '../../context/ProductContext';
 import { Link } from 'react-router-dom';
 
+//Style
+import {Drawer, List, ListItem, ListItemButton, ListItemText, Stack, 
+    Typography, Collapse, Box, Button, IconButton, Badge,Divider
+} from '@mui/material';
+
+//Icons
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { ExpandLess, ExpandMore } from '@mui/icons-material';
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import DevicesIcon from "@mui/icons-material/Devices";
 import HomeIcon from "@mui/icons-material/Home";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 import CheckroomIcon from "@mui/icons-material/Checkroom";
 import WatchIcon from "@mui/icons-material/Watch";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import { AuthContext } from '../../context/AuthContext';
-import { UserContext } from '../../context/UserContext';
-import { ProductContext } from '../../context/ProductContext';
+
 
 const categories = [
     { name: "Tecnología", icon: <DevicesIcon fontSize="small" sx={{ color: '#fff', mr: 1 }} /> },
@@ -45,8 +37,8 @@ const MenuMobile = ({ openDrawer, setOpenDrawer }) => {
     const { user, handleLogout } = useContext(AuthContext);
     const { favorites } = useContext(UserContext);
     const { cart } = useContext(ProductContext);
-    const [open, setOpen] = useState(false);
 
+    const [open, setOpen] = useState(false);
     const handleClick = () => {
         setOpen(prev => !prev);
     };
@@ -74,12 +66,12 @@ const MenuMobile = ({ openDrawer, setOpenDrawer }) => {
                             </Typography>
                             <Divider sx={{ borderColor: '#fff', mt: 1 }} />
                             <Stack direction="row" spacing={3} sx={{ mt: 2, justifyContent: 'center' }}>
-                                <IconButton component={Link} to="/user/favorites" color="inherit">
+                                <IconButton component={Link} to="/user/favorites" color="inherit" onClick={() => setOpenDrawer(false)}>
                                     <Badge badgeContent={favorites.length} color="error">
                                         <FavoriteIcon sx={{ color: '#fff' }} />
                                     </Badge>
                                 </IconButton>
-                                <IconButton component={Link} to="/cart" color="inherit">
+                                <IconButton component={Link} to="/cart" color="inherit" onClick={() => setOpenDrawer(false)}>
                                     <Badge badgeContent={cart.length} color="error">
                                         <ShoppingCartIcon sx={{ color: '#fff' }} />
                                     </Badge>
@@ -118,7 +110,7 @@ const MenuMobile = ({ openDrawer, setOpenDrawer }) => {
             }
             <List sx={{ width: 250 }}>
                 <ListItem disablePadding>
-                    <ListItemButton component={Link} to="/">
+                    <ListItemButton component={Link} to="/" onClick={() => setOpenDrawer(false)}>
                         <ListItemText primary={
                             <Typography color="primary.main" fontWeight={600}>
                                 Inicio
@@ -141,7 +133,7 @@ const MenuMobile = ({ openDrawer, setOpenDrawer }) => {
                 <Collapse in={open} timeout="auto" unmountOnExit>
                     <List component="div" disablePadding sx={{ backgroundColor: 'primary.main' }}>
                         {categories.map((cat) => (
-                            <ListItemButton key={cat.name} component={Link} to={`/category?q=${cat.name}`}>
+                            <ListItemButton key={cat.name} component={Link} to={`/category?q=${cat.name}`} onClick={() => setOpenDrawer(false)}>
                                 <ListItemText primary={
                                     <Typography sx={{ color: '#fff' }} fontWeight={600}>
                                         {cat.icon} {cat.name}
@@ -153,7 +145,7 @@ const MenuMobile = ({ openDrawer, setOpenDrawer }) => {
                     </List>
                 </Collapse>
                 <ListItem disablePadding>
-                    <ListItemButton component={Link} to="/contact">
+                    <ListItemButton component={Link} to="/contact" onClick={() => setOpenDrawer(false)}>
                         <ListItemText primary={
                             <Typography color="primary.main" fontWeight={600}>
                                 Contacto
@@ -165,7 +157,7 @@ const MenuMobile = ({ openDrawer, setOpenDrawer }) => {
                     user
                         ? (
                             <ListItem disablePadding>
-                                <ListItemButton component={Link} to="/product/sell">
+                                <ListItemButton component={Link} to="/product/sell"  onClick={() => setOpenDrawer(false)}>
                                     <ListItemText primary={
                                         <Typography color="primary.main" fontWeight={600}>
                                             Vender
@@ -177,7 +169,7 @@ const MenuMobile = ({ openDrawer, setOpenDrawer }) => {
                         : ''
                 }
                 <ListItem disablePadding>
-                    <ListItemButton component={Link} to="/help">
+                    <ListItemButton component={Link} to="/help" onClick={() => setOpenDrawer(false)}>
                         <ListItemText primary={
                             <Typography color="primary.main" fontWeight={600}>
                                 Ayuda

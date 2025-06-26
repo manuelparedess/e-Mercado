@@ -1,18 +1,11 @@
 import React, { useContext, useState } from "react";
-import {
-    Box,
-    Typography,
-    Divider,
-    Grid,
-    Button,
-    Paper,
-    Stack,
-    IconButton,
-} from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import { ProductContext } from "../../context/ProductContext";
+
 import QuantityCounter from "../../components/common/QuantityCounter";
 import CartModal from "../../components/modules/CartModal";
-import { useNavigate } from "react-router-dom";
+
+import { Box, Typography, Divider, Grid, Button, Paper, IconButton } from "@mui/material";
 import CloseIcon from '@mui/icons-material/Close';
 
 const CartPage = () => {
@@ -24,7 +17,7 @@ const CartPage = () => {
     const navigate = useNavigate();
 
     return (
-        <Box sx={{ maxWidth: 1000, mx: { xs: 0, sm: "auto" }, pt: 4, px: { xs: 1, sm: 4 } }}>
+        <Box sx={{ maxWidth: 1000, mx: { xs: 0, sm: "auto" }, pt: 4, px: { xs: 1, sm: 4 }, height: '100dvh'}}>
             <Typography className='ff-noto-sans' variant="h4" sx={{ fontWeight: 'bold', mb: 1, color: '#1f8946', textAlign: { xs: 'center', md: 'left' } }}>
                 Carrito de Compras
             </Typography>
@@ -65,11 +58,14 @@ const CartPage = () => {
                                         sx={{ width: {xs: 80, sm: 100}, height: 100, objectFit: "cover", borderRadius: 2, mr: 2, cursor: 'pointer' }}
                                     />
                                     <Box sx={{ flexGrow: 1 }}>
-                                        <Typography variant="h6">{item.product.name}</Typography>
+                                        <Typography sx={{ fontSize: { xs: '1.1rem', md: '1.2rem', lg: '1.4rem' }, mb: 0 }}>{item.product.name}</Typography>
                                         <Typography variant="body2" color="text.secondary">
                                             Cantidad: {item.quantity} x ${item.product.price}
                                         </Typography>
-                                        <Typography variant="body1" fontWeight={600}>
+                                        <Typography sx={{display: {xs: 'none', sm: 'inherit'}}} variant="body1" fontWeight={600}>
+                                            Subtotal: ${(item.product.price * item.quantity).toFixed(2)}
+                                        </Typography>
+                                        <Typography sx={{display: {xs: 'inherit', sm: 'none'}}} variant="body2" fontWeight={600}>
                                             Subtotal: ${(item.product.price * item.quantity).toFixed(2)}
                                         </Typography>
                                     </Box>

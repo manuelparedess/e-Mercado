@@ -1,9 +1,11 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext } from 'react'
+import { AuthContext } from '../../context/AuthContext';
+import { UserContext } from '../../context/UserContext';
+
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import { IconButton } from '@mui/material';
-import { AuthContext } from '../../context/AuthContext';
-import { UserContext } from '../../context/UserContext';
+
 
 const FavoriteButton = ({ product }) => {
 
@@ -43,4 +45,4 @@ const FavoriteButton = ({ product }) => {
     )
 }
 
-export default FavoriteButton
+export default FavoriteButton;

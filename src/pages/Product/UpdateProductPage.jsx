@@ -1,23 +1,11 @@
 import React, { useState } from 'react';
-import {
-    Box,
-    TextField,
-    Button,
-    MenuItem,
-    InputLabel,
-    Select,
-    FormControl,
-    Typography,
-    Divider,
-    Alert,
-    Grid,
-    Paper,
-} from '@mui/material';
-import InputImage from '../../components/common/InputImage';
-import Swal from 'sweetalert2';
 import { useLoaderData, useNavigate } from 'react-router-dom';
 import { updateProduct } from '../../api/product/updateProduct';
 import { deleteProductImage } from '../../api/product/deleteProductImage';
+
+import InputImage from '../../components/common/InputImage';
+import { Box, TextField, Button, MenuItem, InputLabel, Select, FormControl, Typography, Divider, Alert, Grid, Paper } from '@mui/material';
+import Swal from 'sweetalert2';
 
 const UpdateProductPage = () => {
 

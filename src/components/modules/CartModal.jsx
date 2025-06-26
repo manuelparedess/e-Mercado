@@ -1,21 +1,14 @@
-import React, { useContext, useState } from 'react'
-import {
-    Box,
-    Typography,
-    Divider,
-    Button,
-    Modal,
-    FormControl,
-    InputLabel,
-    Select,
-    MenuItem,
-    TextField,
-} from "@mui/material";
-import Swal from 'sweetalert2';
+import React, { useContext, useState } from 'react';
 import { ProductContext } from '../../context/ProductContext';
 
+import { Box, Typography, Divider, Button, Modal, FormControl, InputLabel, Select, MenuItem, TextField } from "@mui/material";
+import Swal from 'sweetalert2';
+
+
 const CartModal = ({ openModal, setOpenModal }) => {
+
     const { cart, handleClearCart, handleUpdateStock } = useContext(ProductContext);
+
     const total = cart.reduce((sum, item) => sum + item.product.price * item.quantity, 0);
     const [paymentMethod, setPaymentMethod] = useState("card");
 
@@ -73,8 +66,8 @@ const CartModal = ({ openModal, setOpenModal }) => {
 
                 {paymentMethod === "card" && (
                     <>
-                        <TextField label="Número de tarjeta" fullWidth sx={{ mb: 2 }} />
-                        <TextField label="Titular" fullWidth sx={{ mb: 2 }} />
+                        <TextField label="Número de tarjeta" fullWidth sx={{ mb: 2 }} required />
+                        <TextField label="Titular" fullWidth sx={{ mb: 2 }} required />
                         <Box sx={{ display: "flex", gap: 2 }}>
                             <TextField label="Expira" placeholder="MM/AA" fullWidth />
                             <TextField label="CVV" fullWidth />

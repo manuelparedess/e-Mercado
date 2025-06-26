@@ -1,19 +1,14 @@
 import React from "react";
-import {
-    Box,
-    Grid,
-    Paper,
-    Typography,
-    Stack,
-} from "@mui/material";
-import { useNavigate } from "react-router-dom";
+import CategoryCard from "../../components/modules/CategoryCard";
+
+import { Box, Typography } from "@mui/material";
+//icons
 import DevicesIcon from "@mui/icons-material/Devices";
 import HomeIcon from "@mui/icons-material/Home";
 import DirectionsRunIcon from "@mui/icons-material/DirectionsRun";
 import CheckroomIcon from "@mui/icons-material/Checkroom";
 import WatchIcon from "@mui/icons-material/Watch";
 import DirectionsCarIcon from "@mui/icons-material/DirectionsCar";
-import CategoryCard from "../../components/modules/CategoryCard";
 
 const categories = [
     { name: "Tecnología", icon: <DevicesIcon fontSize="large" /> },

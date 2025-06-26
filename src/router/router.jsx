@@ -1,31 +1,35 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainScreen from "../pages/MainScreen";
-import Layout from "../layout/Layout";
-import SellPage from "../pages/Product/SellPage";
-import LoginPage from "../pages/Auth/LoginPage";
-import RegisterPage from "../pages/Auth/RegisterPage";
+//routes
 import PublicRoutes from "./routes/PublicRoutes";
 import PrivateRoutes from "./routes/PrivateRoutes";
+import NotFound from "./routes/NotFound";
+//pages
+import MainScreen from "../pages/MainScreen";
+import Layout from "../layout/Layout";
+import LoginPage from "../pages/Auth/LoginPage";
+import RegisterPage from "../pages/Auth/RegisterPage";
 import UserPage from "../pages/User/UserPage";
-import { getRandomProducts } from "../api/product/getRandomProducts";
+import AnotherUserPage from "../pages/User/AnotherUserPage";
+import UpdatePasswordPage from "../pages/User/UpdatePasswordPage";
 import SearchPage from "../pages/Product/SearchPage";
-import { getProductByName } from "../api/product/getProductByName";
+import CartPage from "../pages/Product/CartPage";
+import SellPage from "../pages/Product/SellPage";
+import UpdateProductPage from "../pages/Product/UpdateProductPage";
 import CategoriesPage from "../pages/Product/CategoriesPage";
 import CategoryPage from "../pages/Product/CategoryPage";
-import { getProductsByCategory } from "../api/product/getProductsByCategory";
-import { getProductById } from "../api/product/getProductById";
 import ProductDetailsPage from "../pages/Product/ProductDetailsPage";
-import AnotherUserPage from "../pages/User/AnotherUserPage";
-import { getUserById } from "../api/user/getUserById";
-import CartPage from "../pages/Product/CartPage";
 import FavoritesPage from "../pages/User/FavoritesPage";
-import { getMyProducts } from "../api/user/getMyProducts";
 import MyProductsPage from "../pages/User/MyProductsPage";
-import UpdateProductPage from "../pages/Product/UpdateProductPage";
-import NotFound from "./routes/NotFound";
 import HelpPage from "../pages/User/HelpPage";
 import ContactPage from "../pages/User/ContactPage";
-import UpdatePasswordPage from "../pages/User/UpdatePasswordPage";
+
+//fetch/loaders
+import { getRandomProducts } from "../api/product/getRandomProducts";
+import { getProductByName } from "../api/product/getProductByName";
+import { getProductsByCategory } from "../api/product/getProductsByCategory";
+import { getProductById } from "../api/product/getProductById";
+import { getUserById } from "../api/user/getUserById";
+import { getMyProducts } from "../api/user/getMyProducts";
 
 
 export const router = createBrowserRouter([

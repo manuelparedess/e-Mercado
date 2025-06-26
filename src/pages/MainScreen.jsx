@@ -1,25 +1,17 @@
 import React, { useState } from "react";
-import {
-    Box,
-    Typography,
-    Button,
-    TextField,
-    InputAdornment,
-    Card,
-    CardMedia,
-    CardContent,
-    Grid,
-    useTheme, useMediaQuery
-} from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
 import { useLoaderData, useNavigate } from "react-router-dom";
+
 import ProductCard from "../components/modules/ProductCard";
 import PublicityCard from "../components/modules/PublicityCard";
 
-const MainScreen = () => {
+import { Box, Typography, Button, TextField, InputAdornment, Grid, useTheme, useMediaQuery } from "@mui/material";
+import SearchIcon from "@mui/icons-material/Search";
 
+const MainScreen = () => {
+    //style
     const theme = useTheme();
     const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
+
 
     const [search, setSearch] = useState('');
     const products = useLoaderData();
@@ -126,4 +118,4 @@ const MainScreen = () => {
     )
 }
 
-export default MainScreen
+export default MainScreen;

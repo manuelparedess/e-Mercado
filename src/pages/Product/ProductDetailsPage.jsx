@@ -1,21 +1,22 @@
 import React, { useContext, useEffect, useState } from "react";
-import {
-    Box,
-    Typography,
-    Button,
-    Grid,
-} from "@mui/material";
 import { Link, useLoaderData, useNavigate } from "react-router-dom";
-import ImageCarrousel from '../../components/common/ImageCarrousel';
-import { ProductContext } from "../../context/ProductContext";
-import Swal from 'sweetalert2';
-import FavoriteButton from "../../components/common/FavoriteButton";
-import { UserContext } from "../../context/UserContext";
+
 import { AuthContext } from "../../context/AuthContext";
+import { UserContext } from "../../context/UserContext";
+import { ProductContext } from "../../context/ProductContext";
+
+import ImageCarrousel from '../../components/common/ImageCarrousel';
+import FavoriteButton from "../../components/common/FavoriteButton";
 import Reviews from "../../components/modules/Reviews";
+
+import Swal from 'sweetalert2';
+import { Box, Typography, Button, Grid, Stack } from "@mui/material";
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+
 
 const ProductDetailsPage = () => {
 
+    //autoscroll
     useEffect(() => {
         window.scrollTo({ top: 0 });
     }, []);
@@ -36,7 +37,7 @@ const ProductDetailsPage = () => {
 
     }, []);
 
-    //creador
+    //creator
     const { handleGetUserById } = useContext(UserContext);
     const [creator, setCreator] = useState({});
 
@@ -51,8 +52,9 @@ const ProductDetailsPage = () => {
         return <Typography variant="h6">Producto no encontrado.</Typography>;
     }
 
+    //cart
     const handleAdd = () => {
-        if(user === null) {
+        if (user === null) {
             navigate('/login');
             return;
         };
@@ -74,15 +76,15 @@ const ProductDetailsPage = () => {
     }
 
     return (
-        <Box sx={{ py: 4, px: {xs: 2, lg: 4}, maxWidth: 1200, mx: "auto" }}>
+        <Box sx={{ py: 4, px: { xs: 2, lg: 4 }, maxWidth: 1200, mx: "auto" }}>
             <Grid container spacing={4} sx={{ backgroundColor: '#fff', boxShadow: 2, p: 2, borderRadius: 2, justifyContent: 'center' }}>
                 {/* Carrousel */}
-                <Grid className="animate__animated animate__backInLeft" item size={{ md: 5, lg: 6}}>
+                <Grid className="animate__animated animate__backInLeft" item size={{ xs: 12, md: 5, lg: 6 }}>
                     <ImageCarrousel images={images} />
                 </Grid>
 
-                <Grid className="animate__animated animate__backInRight" item size={{ md: 7, lg: 6}} sx={{ p: 4, border: '1px solid rgb(227, 227, 227)', borderRadius: 5 }}>
-                    <Typography variant="h4" fontWeight={700} gutterBottom>
+                <Grid className="animate__animated animate__backInRight" item size={{ xs: 12, md: 7, lg: 6 }} sx={{ p: 4, border: '1px solid rgb(227, 227, 227)', borderRadius: 5 }}>
+                    <Typography sx={{ fontSize: { xs: '1.25rem', sm: '1.75rem', lg: '2.15rem' } }} fontWeight={700} gutterBottom>
                         {name}
                     </Typography>
 
@@ -107,15 +109,32 @@ const ProductDetailsPage = () => {
                         </Typography>
                     )}
 
-                    <Typography variant="h5" color="primary" sx={{ my: 2 }}>
+                    <Typography variant="h5" color="primary" sx={{ display: { xs: 'none', md: 'inherit' }, my: 2 }}>
                         ${price}
                     </Typography>
-                    <Box sx={{ display: 'flex', gap: 1 }}>
+                    <Box sx={{ display: { xs: 'none', md: 'flex' }, gap: 1 }}>
                         <Button variant="contained" color="primary" size="large" onClick={handleAdd}>
                             Agregar al carrito
                         </Button>
                         <FavoriteButton product={product} />
                     </Box>
+
+                    <Stack direction={'row'} justifyContent={'space-between'} sx={{ display: { xs: 'flex', md: 'none' }, mt: 2 }}>
+                        <Typography variant="h5" color="primary">
+                            ${price}
+                        </Typography>
+                        <Box sx={{ display: 'flex', gap: 1 }}>
+                            <Button
+                                variant="contained"
+                                color="primary"
+                                size="small"
+                                onClick={handleAdd}
+                            >
+                                <ShoppingCartIcon size='small' />
+                            </Button>
+                            <FavoriteButton product={product} />
+                        </Box>
+                    </Stack>
 
                 </Grid>
             </Grid>

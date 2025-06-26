@@ -1,18 +1,11 @@
 import React, { useContext } from 'react'
-import {
-    Dialog,
-    DialogTitle,
-    DialogContent,
-    DialogActions,
-    Button,
-    Typography,
-    Divider,
-} from "@mui/material";
+import { useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthContext';
 import { UserContext } from '../../context/UserContext';
-import Swal from 'sweetalert2';
 import { ProductContext } from '../../context/ProductContext';
-import { useNavigate } from 'react-router-dom';
+
+import Swal from 'sweetalert2';
+import { Dialog, DialogTitle, DialogContent, DialogActions, Button, Typography, Divider } from "@mui/material";
 
 const ConfirmationModal = ({ open, setOpen, option, id = 0 }) => {
 

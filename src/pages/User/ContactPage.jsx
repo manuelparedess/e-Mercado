@@ -1,12 +1,5 @@
 import React from "react";
-import {
-    Box,
-    Typography,
-    Paper,
-    Stack,
-    IconButton,
-    Link as MuiLink,
-} from "@mui/material";
+import { Box, Typography, Paper, Stack, IconButton, Link as MuiLink } from "@mui/material";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";

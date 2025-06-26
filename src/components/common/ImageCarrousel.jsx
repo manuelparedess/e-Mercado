@@ -1,10 +1,11 @@
 import React, { useState } from "react";
+
 import { Box, IconButton } from "@mui/material";
 import { ArrowBackIos, ArrowForwardIos } from "@mui/icons-material";
 
-export default function ImageCarousel({ images }) {
-    const [current, setCurrent] = useState(0);
 
+const ImageCarousel = ({ images }) => {
+    const [current, setCurrent] = useState(0);
     if (!images.length) return null;
 
     const prev = () => {
@@ -63,3 +64,6 @@ export default function ImageCarousel({ images }) {
         </Box>
     );
 }
+
+
+export default ImageCarousel;

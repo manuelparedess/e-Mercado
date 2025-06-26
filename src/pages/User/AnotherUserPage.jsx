@@ -1,15 +1,10 @@
 import React from "react";
-import {
-    Typography,
-    Box,
-    Stack,
-    Divider,
-    Grid,
-} from "@mui/material";
+import { useLoaderData } from "react-router-dom";
+
+import { Typography, Box, Stack, Divider, Grid } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import PersonIcon from "@mui/icons-material/Person";
-import { useLoaderData } from "react-router-dom";
 
 const AnotherUserPage = () => {
 

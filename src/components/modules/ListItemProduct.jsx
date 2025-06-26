@@ -1,26 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
-import {
-    Card,
-    CardMedia,
-    CardContent,
-    Typography,
-    Button,
-    Stack,
-    Alert,
-    Box,
-    Grid,
-} from "@mui/material";
-import { Link, useNavigate } from "react-router-dom";
-import { ProductContext } from "../../context/ProductContext";
-import Swal from 'sweetalert2';
-import FavoriteButton from "../common/FavoriteButton";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import ConfirmationModal from "../common/ConfirmationModal";
+
+import { Card, CardMedia, CardContent, Typography, Button, Stack, Grid } from "@mui/material";
 
 const ListItemProduct = ({ product }) => {
 
-    const [open, setOpen] = useState(false);
     const { images, name, price, category, stock, description } = product;
     const navigate = useNavigate();
+
+    const [open, setOpen] = useState(false);
 
     return (
         <Grid item size={{ xs: 12, lg: 6 }}>

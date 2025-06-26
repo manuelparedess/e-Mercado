@@ -1,4 +1,5 @@
-import React, { createContext, useContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react';
+
 import { updateUser } from '../api/user/updateUser';
 import { updatePassword } from '../api/user/updatePassword';
 import { deleteUser } from '../api/user/deleteUser';
@@ -12,15 +13,16 @@ export const UserContext = createContext();
 export const UserProvider = ({ children }) => {
     const [error, setError] = useState(false);
     const { user, setUser } = useContext(AuthContext);
-    const [favorites, setFavorites] = useState([]);
 
+    //set favorites
+    const [favorites, setFavorites] = useState([]);
     useEffect(() => {
         if (user?.favorites) {
             setFavorites(user.favorites);
         }
     }, [user]);
 
-    //delete
+    //delete user
     const handleDelete = async () => {
         try {
             setError(false);
@@ -30,7 +32,7 @@ export const UserProvider = ({ children }) => {
         }
     }
 
-    //update
+    //update user
     const handleUpdate = async (data) => {
         try {
             setError(false);

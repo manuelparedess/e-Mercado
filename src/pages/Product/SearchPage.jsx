@@ -1,10 +1,12 @@
 import React, { useState } from 'react'
 import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
+
+import ProductResult from '../../components/modules/ProductResult';
+import Pagination from '../../components/common/Pagination';
+
 import { Box, Typography, Grid, TextField, InputAdornment, Button } from '@mui/material';
 import SearchIcon from "@mui/icons-material/Search";
 import ProductionQuantityLimitsIcon from '@mui/icons-material/ProductionQuantityLimits';
-import ProductResult from '../../components/modules/ProductResult';
-import Pagination from '../../components/common/Pagination';
 
 const SearchPage = () => {
 
@@ -21,7 +23,7 @@ const SearchPage = () => {
 
     return (
 
-        <Box sx={{ px: { xs: 0.5, sm: 2, md: 6 }, pt: { xs: 0, lg: 4 } }}>
+        <Box sx={{ px: { xs: 0.5, sm: 2, md: 6 }, pt: { xs: 1, lg: 4 } }}>
             <Box sx={{ display: "flex", justifyContent: 'center', gap: 2 }}>
                 <TextField
                     onChange={(e) => setSearchState(e.target.value)}

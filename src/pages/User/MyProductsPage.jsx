@@ -1,8 +1,10 @@
-import { Box, Divider, Grid, Typography } from '@mui/material';
-import React, { useState } from 'react'
+import React from 'react'
 import { useLoaderData } from 'react-router-dom';
+
 import Pagination from '../../components/common/Pagination';
 import ListItemProduct from '../../components/modules/ListItemProduct';
+
+import { Box, Divider, Grid, Typography } from '@mui/material';
 import Inventory2OutlinedIcon from '@mui/icons-material/Inventory2Outlined';
 
 const MyProductsPage = () => {

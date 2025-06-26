@@ -1,20 +1,9 @@
 import React, { useState } from 'react';
-import {
-    Box,
-    TextField,
-    Button,
-    MenuItem,
-    InputLabel,
-    Select,
-    FormControl,
-    Typography,
-    Divider,
-    Alert,
-} from '@mui/material';
-import InputImage from '../../components/common/InputImage';
 import { createProduct } from '../../api/product/createProduct';
-import Swal from 'sweetalert2';
+import InputImage from '../../components/common/InputImage';
 
+import { Box, TextField, Button, MenuItem, InputLabel, Select, FormControl, Typography, Divider, Alert } from '@mui/material';
+import Swal from 'sweetalert2';
 
 
 const SellPage = () => {
@@ -85,7 +74,7 @@ const SellPage = () => {
     return (
         <Box className='animate__animated animate__fadeIn animate__faster' sx={{ maxWidth: 600, mx: {xs: 1.5, sm: 'auto'}, mt: 4, p: 3, borderRadius: '15px', boxShadow: '15', backgroundColor: '#fff' }}>
 
-            <Typography className='ff-noto-sans' variant="h4" sx={{ fontWeight: 'bold', mb: 1, color: '#1f8946', textAlign: {xs: 'center', md: 'left'} }}>
+            <Typography className='ff-noto-sans' variant="h4" sx={{ fontWeight: 'bold', mb: 1, color: '#1f8946',  }}>
                 Nuevo Producto
             </Typography>
             <Divider sx={{ borderColor: 'primary.main' }} />

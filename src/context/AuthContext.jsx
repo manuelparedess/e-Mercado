@@ -1,11 +1,11 @@
 import { useState, createContext, useEffect } from 'react';
+
 import { login } from '../api/auth/login';
 import { getUser } from '../api/user/getUser';
-
-import { Box, CircularProgress } from '@mui/material';
 import { register } from '../api/auth/register';
 import { loginWithGoogle } from '../api/auth/loginWithGoogle';
 
+import { Box, CircularProgress } from '@mui/material';
 
 export const AuthContext = createContext();
 
@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
 
 	//relogin
 	useEffect(() => {
-		//Hago una funcion IFE para que sea asincrono
+		//IFE function
 		(async () => {
 			const token = localStorage.getItem('token');
             if(token) {
@@ -106,7 +106,7 @@ export const AuthProvider = ({ children }) => {
     if (loading) return (
         <Box
             sx={{
-                minHeight: '100vh',
+                minHeight: '100dvh',
                 width: '100vw',
                 display: 'flex',
                 justifyContent: 'center',

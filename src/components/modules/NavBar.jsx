@@ -1,35 +1,29 @@
 import React, { useContext, useState } from 'react';
-import {
-    useTheme, useMediaQuery,
-    AppBar,
-    Toolbar,
-    Box,
-    IconButton,
-    Badge,
-    Button,
-    Divider,
-    Avatar,
-    Grid,
-    TextField,
-    InputAdornment,
-} from '@mui/material';
+import { Link, useNavigate } from 'react-router-dom';
+//context
 import { AuthContext } from '../../context/AuthContext';
+import { ProductContext } from '../../context/ProductContext.jsx';
+import { UserContext } from '../../context/UserContext.jsx';
+
+//components
 import NavTabs from '../common/NavTabs.jsx';
+import MenuMobile from '../common/MenuMobile.jsx';
+//style
+import { useTheme, useMediaQuery, AppBar, Toolbar, Box, IconButton, Badge,
+    Button, Divider, Avatar, Grid, TextField, InputAdornment
+} from '@mui/material';
+//icons
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import SearchIcon from "@mui/icons-material/Search";
-
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 import MenuIcon from '@mui/icons-material/Menu';
-import { Link, useNavigate } from 'react-router-dom';
-import { ProductContext } from '../../context/ProductContext.jsx';
-import { UserContext } from '../../context/UserContext.jsx';
-import MenuMobile from '../common/MenuMobile.jsx';
 
 const NavBar = () => {
 
+    //style
     const theme = useTheme();
     const isDesktop = useMediaQuery(theme.breakpoints.up('lg'));
     const [openDrawer, setOpenDrawer] = useState(false);
@@ -208,11 +202,3 @@ const NavBar = () => {
 }
 
 export default NavBar;
-
-
-
-
-
-// agregar dropdown o en su defecto una tab de categorias y una categorypage
-// agregar un buscador
-//separar componentes como la tabs 

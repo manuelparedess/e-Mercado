@@ -1,8 +1,10 @@
 import React, { useContext, useState } from 'react';
+import { ProductContext } from '../../context/ProductContext';
+
 import { Box, IconButton, Typography } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
-import { ProductContext } from '../../context/ProductContext';
+
 
 const QuantityCounter = ({ product, initial }) => {
     const [count, setCount] = useState(initial);
@@ -37,16 +39,24 @@ const QuantityCounter = ({ product, initial }) => {
                 backgroundColor: '#f9f9f9',
             }}
         >
-            <IconButton onClick={handleDecrement} sx={{ color: '#1f8946' }} disabled={count <= 1}>
+            <IconButton onClick={handleDecrement} sx={{ color: '#1f8946', display: {xs: 'none', sm: 'inherit' } }} disabled={count <= 1}>
                 <RemoveIcon />
+            </IconButton>
+
+            <IconButton onClick={handleDecrement} size='small' sx={{ color: '#1f8946', display: {xs: 'inherit', sm: 'none' } }} disabled={count <= 1}>
+                <RemoveIcon fontSize='small' />
             </IconButton>
 
             <Typography sx={{ flexGrow: 1, textAlign: 'center', color: '#1f8946' }}>
                 {count}
             </Typography>
 
-            <IconButton onClick={handleIncrement} sx={{ color: '#1f8946' }} disabled={count >= product.stock}>
+            <IconButton onClick={handleIncrement} sx={{ color: '#1f8946', display: {xs: 'none', sm: 'inherit' } }} disabled={count >= product.stock}>
                 <AddIcon />
+            </IconButton>
+
+            <IconButton onClick={handleIncrement} size='small' sx={{ color: '#1f8946', display: {xs: 'inherit', sm: 'none' } }} disabled={count >= product.stock}>
+                <AddIcon fontSize='small' />
             </IconButton>
         </Box>
     );

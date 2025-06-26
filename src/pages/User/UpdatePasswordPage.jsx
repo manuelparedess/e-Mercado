@@ -1,13 +1,5 @@
 import React, { useContext, useState } from "react";
-import {
-    Box,
-    TextField,
-    Typography,
-    Button,
-    Stack,
-    Divider,
-    Alert
-} from "@mui/material";
+import { Box, TextField, Typography, Button, Stack, Divider, Alert } from "@mui/material";
 import { UserContext } from "../../context/UserContext";
 import Swal from 'sweetalert2';
 
@@ -22,7 +14,6 @@ const UpdatePasswordPage = () => {
     });
     const [different, setDifferent] = useState(null);
     const [success, setSuccess] = useState(false);
-
 
     const handleChange = (e) => {
         const { name, value } = e.target;

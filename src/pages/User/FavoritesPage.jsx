@@ -1,6 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { UserContext } from '../../context/UserContext';
 import { ProductContext } from '../../context/ProductContext';
+
 import { Box, Divider, Grid, Typography } from '@mui/material';
 import HeartBrokenIcon from '@mui/icons-material/HeartBroken';
 import ProductResult from '../../components/modules/ProductResult';
@@ -65,4 +66,4 @@ const FavoritesPage = () => {
     )
 }
 
-export default FavoritesPage
+export default FavoritesPage;

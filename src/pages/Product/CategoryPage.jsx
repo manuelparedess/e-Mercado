@@ -1,14 +1,17 @@
 import React, { useState } from 'react'
 import { useLoaderData, useLocation, useNavigate } from 'react-router-dom';
-import { Box, Grid, Typography, List, ListItemButton, ListItemText, Divider, Tabs, Tab } from "@mui/material";
+
 import ProductResult from '../../components/modules/ProductResult';
 import Pagination from '../../components/common/Pagination';
+
+import { Box, Grid, Typography, List, ListItemButton, ListItemText, Divider, Tabs, Tab } from "@mui/material";
 
 const categories = ['Tecnología', 'Hogar', 'Calzado', 'Ropa', 'Accesorios', 'Vehiculos']
 
 const CategoryPage = () => {
 
     const { info, results } = useLoaderData();
+
     const { search } = useLocation();
     const category = new URLSearchParams(search).get('q');
     const navigate = useNavigate();
@@ -22,7 +25,7 @@ const CategoryPage = () => {
 
     return (
         <Box sx={{ display: { lg: 'block', xl: "flex" }, py: {xs: 1, sm: 4}, px: { xs: 0.5, sm: 2, md: 5 }, mt: { xs: 0, xl: 3 } }}>
-            {/* ASIDE */}
+            {/* ASIDE (XL) */}
             <Box sx={{ width: { lg: 100, xl: 200 }, pr: 4, display: { xs: 'none', xl: 'block' } }}>
                 <Typography variant="h6" gutterBottom fontWeight={600} sx={{ color: 'primary.main' }} >
                     Categorías
@@ -57,7 +60,8 @@ const CategoryPage = () => {
                     ))}
                 </List>
             </Box>
-            {/* NAVTABS */}
+
+            {/* NAVTABS (LG) */}
             <Box sx={{ width: 600, display: { xs: 'none', lg: 'block', xl: 'none' }, mb: 2 }}>
                 <Typography variant="h4" gutterBottom fontWeight={600} sx={{ color: 'primary.main' }}>
                     Categorías

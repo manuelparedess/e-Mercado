@@ -1,15 +1,17 @@
 import React, { useContext, useEffect, useState } from 'react';
-import { Card, CardContent, CardMedia, Typography, Box, Button, Alert, Grid } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../../context/AuthContext';
 import { ProductContext } from '../../context/ProductContext';
+
 import Swal from 'sweetalert2';
 import FavoriteButton from '../common/FavoriteButton';
-import { AuthContext } from '../../context/AuthContext';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import { Card, CardContent, CardMedia, Typography, Box, Button, Alert, Grid, Stack } from '@mui/material';
 
 const ProductCard = ({ product }) => {
 
     const { images, name, price, stock, category } = product;
+
     const { cart, handleAddToCart } = useContext(ProductContext)
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -24,7 +26,7 @@ const ProductCard = ({ product }) => {
 
     const handleAdd = (e) => {
         e.stopPropagation();
-        if(user === null) {
+        if (user === null) {
             navigate('/login');
             return;
         }
@@ -47,12 +49,12 @@ const ProductCard = ({ product }) => {
 
 
     return (
-        <Grid item size={{xs: 6, md: 4, xl: 3}}>
+        <Grid item size={{ xs: 6, md: 4, xl: 3 }}>
             <Card
                 onClick={() => navigate(`/product/${product._id}`)}
                 sx={{
-                    width: {xs: '95%', md: '90%'},
-                    height: {xs: '90%', md: 'auto'},
+                    width: { xs: '95%', md: '90%' },
+                    height: { xs: '90%', md: 'auto' },
                     display: "flex",
                     flexDirection: "column",
                     borderRadius: 3,
@@ -68,8 +70,8 @@ const ProductCard = ({ product }) => {
                     src={`https://e-mercado.onrender.com${images[0]}`}
                     alt={name}
                     sx={{
-                        height: {xs: 100, md: 160, xl: 200},
-                        objectFit: {xs: 'contain', md: 'cover'},
+                        height: { xs: 125, md: 160, xl: 200 },
+                        objectFit: { xs: 'contain', md: 'cover' },
                     }}
                 />
                 <CardContent
@@ -84,23 +86,31 @@ const ProductCard = ({ product }) => {
                     }}
                 >
                     <Box>
-                        <Typography sx={{fontSize: {xs: '1rem', md: '1.2rem', lg: '1.3rem'}}} fontWeight={700} gutterBottom>
+                        <Typography sx={{ fontSize: { xs: '1rem', md: '1.2rem', lg: '1.3rem' } }} fontWeight={700} gutterBottom>
                             {name}
                         </Typography>
-                        <Typography variant="body1" color="text.secondary">
+                        <Typography variant="body1" color="text.secondary" sx={{ display: { xs: 'none', md: 'inherit' } }}>
                             {category}
                         </Typography>
-                        <Typography variant="h6" color="primary" sx={{ mt: {xs: 0.5, md: 1.5} }}>
+                        <Typography variant="h6" color="primary" sx={{ mt: { sm: 0.5, md: 1.5 }, display: { xs: 'none', md: 'inherit' } }}>
                             ${price}
                         </Typography>
+                        <Stack direction={'row'} spacing={2} alignItems={'center'}>
+                            <Typography variant="body2" color="text.secondary" sx={{ display: { xs: 'inherit', md: 'none' } }}>
+                                {category}
+                            </Typography>
+                            <Typography variant="body1" color="primary" sx={{ mt: 0.5, display: { xs: 'inherit', md: 'none' } }}>
+                                ${price}
+                            </Typography>
+                        </Stack>
                     </Box>
 
-                    <Box sx={{ display: 'flex', gap: {xs: 0.5, md: 1}, mt: {xs: 0.5, md: 2}, alignItems: 'center' }}>
+                    <Box sx={{ display: 'flex', gap: 1, mt: { xs: 0.5, md: 2 }, alignItems: 'center' }}>
                         <Button
                             variant="contained"
                             color="primary"
                             size="medium"
-                            sx={{alignSelf: "flex-start", display: {xs: 'none', md: 'block'} }}
+                            sx={{ alignSelf: "flex-start", display: { xs: 'none', md: 'block' } }}
                             onClick={handleAdd}
                         >
                             Agregar al carrito
@@ -109,17 +119,17 @@ const ProductCard = ({ product }) => {
                             variant="contained"
                             color="primary"
                             size="small"
-                            sx={{alignSelf: "flex-start", display: {xs: 'block', md: 'none'}}}
+                            sx={{ alignSelf: "flex-start", display: { xs: 'block', md: 'none' } }}
                             onClick={handleAdd}
                         >
-                            Agregar <ShoppingCartIcon size='small' />
+                            <ShoppingCartIcon size='small' />
                         </Button>
                         <FavoriteButton product={product} />
                     </Box>
                     {
                         stockAvaiable == 0
                             ? (
-                                <Alert sx={{mt: 1}} severity='error'>Sin stock</Alert>
+                                <Alert sx={{ mt: 1 }} severity='error'>Sin stock</Alert>
                             )
                             : ''
                     }

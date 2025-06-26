@@ -1,20 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
-import {
-    Typography,
-    Box,
-    Stack,
-    Divider,
-    Grid,
-    Button,
-    TextField,
-} from "@mui/material";
+import { Link, useNavigate } from "react-router-dom";
+
+import { AuthContext } from "../../context/AuthContext";
+import { UserContext } from "../../context/UserContext";
+import ConfirmationModal from "../../components/common/ConfirmationModal";
+
+import { Typography, Box, Stack, Divider, Grid, Button, TextField } from "@mui/material";
 import LocationOnIcon from "@mui/icons-material/LocationOn";
 import MailOutlineIcon from "@mui/icons-material/MailOutline";
 import PersonIcon from "@mui/icons-material/Person";
-import { AuthContext } from "../../context/AuthContext";
-import { Link, useNavigate } from "react-router-dom";
-import { UserContext } from "../../context/UserContext";
-import ConfirmationModal from "../../components/common/ConfirmationModal";
 import Swal from 'sweetalert2';
 
 const UserPage = () => {
@@ -75,7 +69,7 @@ const UserPage = () => {
                     boxShadow: 3,
                 }}
             >
-                <Typography variant="h4" fontWeight={700} gutterBottom color="primary" sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+                <Typography variant="h4" fontWeight={700} gutterBottom color="primary" >
                     Perfil del Usuario
                 </Typography>
 
@@ -150,7 +144,7 @@ const UserPage = () => {
                         )}
                     </Grid>
 
-                    {/* Dirección */}
+                    {/* Address */}
                     {isEditing
                         ? (
                             <Grid item size={{ xs: 12 }}>

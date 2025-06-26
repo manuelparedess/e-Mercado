@@ -1,26 +1,18 @@
 import React, { useContext, useEffect, useState } from "react";
-import {
-    Card,
-    CardMedia,
-    CardContent,
-    Typography,
-    Button,
-    Stack,
-    Alert,
-    Box,
-    Grid,
-} from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import { ProductContext } from "../../context/ProductContext";
-import Swal from 'sweetalert2';
-import FavoriteButton from "../common/FavoriteButton";
 import { AuthContext } from "../../context/AuthContext";
+import { ProductContext } from "../../context/ProductContext";
+
+import { Card, CardMedia, CardContent, Typography, Button, Stack, Alert, Box, Grid } from "@mui/material";
+import FavoriteButton from "../common/FavoriteButton";
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import Swal from 'sweetalert2';
 
 
 const ProductResult = ({ product }) => {
 
     const { images, name, price, category, stock, description } = product;
+
     const { cart, handleAddToCart } = useContext(ProductContext);
     const { user } = useContext(AuthContext);
     const navigate = useNavigate();
@@ -84,7 +76,7 @@ const ProductResult = ({ product }) => {
                 />
 
                 <CardContent sx={{ flex: 1, ml: 3, p: 0 }}>
-                    <Typography variant="h6" fontWeight={700} gutterBottom sx={{mb: 0}}>
+                    <Typography sx={{ fontSize: { xs: '1.1rem', md: '1.2rem', lg: '1.3rem' }, mb: 0 }} fontWeight={700} gutterBottom>
                         {name}
                     </Typography>
 
@@ -92,7 +84,7 @@ const ProductResult = ({ product }) => {
                         {description}
                     </Typography>
 
-                    <Stack direction="row" spacing={3} alignItems="center" sx={{ mb: 1 }}>
+                    <Stack direction="row" spacing={3} alignItems="center" sx={{ mb: { xs: 0.5, sm: 1} }}>
                         <Typography variant="body2" color="text.secondary">
                             Categoría: <strong>{category}</strong>
                         </Typography>
@@ -115,7 +107,7 @@ const ProductResult = ({ product }) => {
                             </Button>
                         </Box>
                     </Stack>
-                    <Box sx={{ display: { xs: 'flex', sm: 'none', lg: 'flex', xl: 'none' }, gap: 1, mt: {xs: 2, sm: 0} }}>
+                    <Box sx={{ display: { xs: 'flex', sm: 'none', lg: 'flex', xl: 'none' }, gap: 1, mt: {xs: 1, sm: 0} }}>
                         <Button variant="contained" color="primary" onClick={handleAdd} sx={{ display: { xs: 'none', sm: 'flex'}}}>
                             Agregar al carrito
                         </Button>
@@ -126,7 +118,7 @@ const ProductResult = ({ product }) => {
                             sx={{ alignSelf: "flex-start", display: { xs: 'flex', sm: 'none' }} }
                             onClick={handleAdd}
                         >
-                            Agregar <ShoppingCartIcon size='small' />
+                            <ShoppingCartIcon size='small' />
                         </Button>
                         <FavoriteButton product={product} />
                     </Box>

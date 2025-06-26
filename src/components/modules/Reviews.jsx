@@ -1,15 +1,16 @@
-import { Box, Button, Divider, Paper, Rating, TextField, Typography } from '@mui/material';
 import React, { useContext, useEffect, useState } from 'react'
 import { addReview } from '../../api/product/addReview';
+import { deleteReview } from '../../api/product/deleteReview';
+
 import { UserContext } from '../../context/UserContext';
 import { AuthContext } from '../../context/AuthContext';
+
 import Swal from 'sweetalert2';
-import { deleteReview } from '../../api/product/deleteReview';
+import { Box, Button, Divider, Paper, Rating, Stack, TextField, Typography } from '@mui/material';
 
 const Reviews = ({ product }) => {
 
     const { user } = useContext(AuthContext);
-
     const { handleGetUserById } = useContext(UserContext);
 
     const [reviews, setReviews] = useState(product.reviews);
@@ -104,27 +105,50 @@ const Reviews = ({ product }) => {
                                 onChange={(e) => setNewText(e.target.value)}
                                 sx={{ mb: 2 }}
                             />
-                            <Button
-                                variant="contained"
-                                onClick={handleReviewSubmit}
-                                disabled={!newText || newRating === 0}
-                            >
-                                Enviar reseña
-                            </Button>
-                            {
-                                alreadyReviewed
-                                    ? (
-                                        <Button
-                                            sx={{ mx: 2 }}
-                                            variant="contained"
-                                            color='error'
-                                            onClick={handleDeleteReview}
-                                        >
-                                            Borrar reseña
-                                        </Button>
-                                    )
-                                    : ''
-                            }
+                            <Stack direction={'row'} sx={{width: '100%'}}>
+                                <Button
+                                    variant="contained"
+                                    onClick={handleReviewSubmit}
+                                    disabled={!newText || newRating === 0}
+                                    sx={{ display: { xs: 'none', md: 'inherit' } }}
+                                >
+                                    Enviar reseña
+                                </Button>
+                                <Button
+                                    variant="contained"
+                                    onClick={handleReviewSubmit}
+                                    disabled={!newText || newRating === 0}
+                                    sx={{ display: { xs: 'inherit', md: 'none' } }}
+                                    size='small'
+                                >
+                                    Enviar reseña
+                                </Button>
+                                {
+                                    alreadyReviewed
+                                        ? (
+                                            <>
+                                                <Button
+                                                    variant="contained"
+                                                    color='error'
+                                                    onClick={handleDeleteReview}
+                                                    sx={{ display: { xs: 'none', md: 'inherit' }, mx: 2 }}
+                                                >
+                                                    Borrar reseña
+                                                </Button>
+                                                <Button
+                                                    variant="contained"
+                                                    color='error'
+                                                    onClick={handleDeleteReview}
+                                                    sx={{ display: { xs: 'inherit', md: 'none' }, mx: 2 }}
+                                                    size='small'
+                                                >
+                                                    Borrar reseña
+                                                </Button>
+                                            </>
+                                        )
+                                        : ''
+                                }
+                            </Stack>
                         </Paper>
                     )
                     : ''

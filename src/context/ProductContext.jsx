@@ -1,4 +1,5 @@
 import React, { createContext, useEffect, useState } from 'react'
+
 import { updateStock } from '../api/product/updateStock';
 import { getProductById2 } from "../api/product/getProductById";
 import { deleteProduct } from '../api/product/deleteProduct';
@@ -6,8 +7,9 @@ import { deleteProduct } from '../api/product/deleteProduct';
 export const ProductContext = createContext();
 
 export const ProductProvider = ({ children }) => {
-    const [cart, setCart] = useState([]);
 
+    //CART
+    const [cart, setCart] = useState([]);
     useEffect(() => {
         const cartSaved = JSON.parse(localStorage.getItem('cart')) || [];
         setCart(cartSaved);
@@ -16,6 +18,7 @@ export const ProductProvider = ({ children }) => {
     useEffect(() => {
         localStorage.setItem('cart', JSON.stringify(cart))
     }, [cart]);
+
 
     //Add to cart
     const handleAddToCart = (product, stockAvaiable) => {
@@ -65,6 +68,7 @@ export const ProductProvider = ({ children }) => {
         }
     }
 
+    //PRODUCTS
     //get product by id
     const handleGetProductById = async (id) => {
         try {

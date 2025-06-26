@@ -1,11 +1,9 @@
 import React from 'react'
-import {
-    Box,
-    IconButton,
-} from '@mui/material';
+import { useLocation, useNavigate } from 'react-router-dom';
+
+import { Box, IconButton } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
-import { useLocation, useNavigate } from 'react-router-dom';
 
 const Pagination = ({ pagination }) => {
 

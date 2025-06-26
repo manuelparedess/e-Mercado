@@ -1,12 +1,5 @@
 import React from "react";
-import {
-    Box,
-    Typography,
-    Accordion,
-    AccordionSummary,
-    AccordionDetails,
-    Divider,
-} from "@mui/material";
+import { Box, Typography, Accordion, AccordionSummary, AccordionDetails, Divider } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 const faqs = [
