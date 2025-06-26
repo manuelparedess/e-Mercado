@@ -7,7 +7,6 @@ import RegisterPage from "../pages/Auth/RegisterPage";
 import PublicRoutes from "./routes/PublicRoutes";
 import PrivateRoutes from "./routes/PrivateRoutes";
 import UserPage from "../pages/User/UserPage";
-import UpdatePasswordPage from "../pages/User/updatePasswordPage";
 import { getRandomProducts } from "../api/product/getRandomProducts";
 import SearchPage from "../pages/Product/SearchPage";
 import { getProductByName } from "../api/product/getProductByName";
@@ -26,6 +25,7 @@ import UpdateProductPage from "../pages/Product/UpdateProductPage";
 import NotFound from "./routes/NotFound";
 import HelpPage from "../pages/User/HelpPage";
 import ContactPage from "../pages/User/ContactPage";
+import UpdatePasswordPage from "../pages/User/UpdatePasswordPage";
 
 
 export const router = createBrowserRouter([
