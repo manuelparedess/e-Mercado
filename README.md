@@ -21,11 +21,12 @@
   - MongoDB + Mongoose
   - JWT (JSON Web Token) for authentication
   - Multer (file uploads)
+  - Cloudinary for images
   - CORS / dotenv / bcrypt
 
 ---
 
-## 🔐 Autenticación
+## 🔐 Authentication
 
 - Email & password authentication
 - Authentication with **Google**
