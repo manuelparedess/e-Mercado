@@ -29,7 +29,7 @@ const ImageCarousel = ({ images }) => {
         >
             <Box
                 component="img"
-                src={`https://e-mercado.onrender.com${images[current]}`}
+                src={`${images[current]}`}
                 alt={`img-${current}`}
                 sx={{
                     width: "100%",

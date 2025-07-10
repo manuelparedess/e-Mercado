@@ -158,7 +158,7 @@ const UpdateProductPage = () => {
                                 }}
                             >
                                 <img
-                                    src={`https://e-mercado.onrender.com${img}`}
+                                    src={`${img}`}
                                     alt={`upload-${idx}`}
                                     style={{
                                         width: '100%',

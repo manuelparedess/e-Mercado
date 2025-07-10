@@ -67,7 +67,7 @@ const ProductCard = ({ product }) => {
             >
                 <CardMedia
                     component="img"
-                    src={`https://e-mercado.onrender.com${images[0]}`}
+                    src={`${images[0]}`}
                     alt={name}
                     sx={{
                         height: { xs: 125, md: 160, xl: 200 },
