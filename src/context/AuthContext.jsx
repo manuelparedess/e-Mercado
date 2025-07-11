@@ -5,7 +5,7 @@ import { getUser } from '../api/user/getUser';
 import { register } from '../api/auth/register';
 import { loginWithGoogle } from '../api/auth/loginWithGoogle';
 
-import { Box, CircularProgress } from '@mui/material';
+import { Box, Button, CircularProgress, Typography } from '@mui/material';
 
 export const AuthContext = createContext();
 
@@ -14,6 +14,8 @@ export const AuthProvider = ({ children }) => {
 	const [error, setError] = useState(false);
     const [loading, setLoading] = useState(true);
     const [reload, setReload] = useState(false);
+    //timeout
+    const [timeout, setTimeout] = useState(false);
 
 	//relogin
 	useEffect(() => {
@@ -37,6 +39,9 @@ export const AuthProvider = ({ children }) => {
 
         } catch (error) {
             setUser(null);
+            if (error.message === 'Timeout finished') {
+                setTimeout(true);
+            }
         }
     }
 
@@ -115,6 +120,35 @@ export const AuthProvider = ({ children }) => {
             }}
         >
             <CircularProgress sx={{ color: '#1f8946' }} size={50} />
+        </Box>
+    );
+
+    if (timeout) return (
+        <Box
+            sx={{
+                minHeight: '100dvh',
+                width: '100vw',
+                display: 'flex',
+                flexDirection: "column",
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: '#1f8946',
+            }}
+        >
+            <Typography variant="h1" fontWeight={800} sx={{color: '#fff'}} gutterBottom>
+                Ups...
+            </Typography>
+            <Typography variant="h5" sx={{color: '#fff', width: '50%'}} mb={3}>
+                Lo siento, el servidor alojado en Render utiliza el plan gratuito, el cual se queda inactivo luego de un tiempo. Por favor, espere unos 30 segundos y vuelva a recargar para que la página se renderice.
+            </Typography>
+            <Button
+                variant="contained"
+                color="primary"
+                onClick={() => window.location.reload()}
+                sx={{ mt: 2 }}
+            >
+                Recargar página
+            </Button>
         </Box>
     );
 
