@@ -128,12 +128,14 @@ const LoginPage = () => {
                         </Button>
                         <Divider sx={{ mt: 1 }}>o</Divider>
                     </form>
-                    <GoogleLogin
-                        onSuccess={(credentialResponse) => {
-                            handleGoogleLogin(credentialResponse);
-                        }}
-                        onError={() => console.log('Login Failed')}
-                    />
+                    <Box sx={{display: 'flex', justifyContent: 'center', width: '100%'}}>
+                        <GoogleLogin
+                            onSuccess={(credentialResponse) => {
+                                handleGoogleLogin(credentialResponse);
+                            }}
+                            onError={() => console.log('Login Failed')}
+                        />
+                    </Box>
                 </Box>
             </Box>
 

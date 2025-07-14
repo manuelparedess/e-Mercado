@@ -33,6 +33,7 @@ const UpdateProductPage = () => {
 
     const handleChange = (e) => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
+        setValidation({ ...validation, [e.target.name]: false }); 
     };
 
     const handleValidation = () => {

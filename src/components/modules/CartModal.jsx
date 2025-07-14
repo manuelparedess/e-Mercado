@@ -1,5 +1,6 @@
 import React, { useContext, useState } from 'react';
 import { ProductContext } from '../../context/ProductContext';
+import PaymentForm from '../common/PaymentForm';
 
 import { Box, Typography, Divider, Button, Modal, FormControl, InputLabel, Select, MenuItem, TextField } from "@mui/material";
 import Swal from 'sweetalert2';
@@ -32,7 +33,7 @@ const CartModal = ({ openModal, setOpenModal }) => {
                     top: "50%",
                     left: "50%",
                     transform: "translate(-50%, -50%)",
-                    width: {xs: '100vw', sm: 400},
+                    width: { xs: '100vw', sm: 400 },
                     bgcolor: "background.paper",
                     boxShadow: 24,
                     borderRadius: 2,
@@ -65,56 +66,27 @@ const CartModal = ({ openModal, setOpenModal }) => {
                 </FormControl>
 
                 {paymentMethod === "card" && (
-                    <>
-                        <TextField label="Número de tarjeta" fullWidth sx={{ mb: 2 }} required />
-                        <TextField label="Titular" fullWidth sx={{ mb: 2 }} required />
-                        <Box sx={{ display: "flex", gap: 2 }}>
-                            <TextField label="Expira" placeholder="MM/AA" fullWidth />
-                            <TextField label="CVV" fullWidth />
-                        </Box>
-                    </>
+                    <PaymentForm confirmPurchase={confirmPurchase} setOpenModal={setOpenModal} />
                 )}
 
-                {paymentMethod === "mercadopago"
-                    ? (
-                        <Box mt={3}>
-                            <Button fullWidth onClick={() => setOpenModal(false)} variant="outlined" color="error" sx={{mb: 2}}>
-                                Cancelar
-                            </Button>
-                            <Button
-                                fullWidth
-                                onClick={() => {
-                                    window.open("https://www.mercadopago.com.", "_blank");
-                                    confirmPurchase();
-                                }}
-                                variant="contained"
-                                color="primary"
-                            >
-                                Pagar con Mercado Pago
-                            </Button>
-                        </Box>
-                    )
-                    : (
-                        <>
-                            <Box mt={3} display={{xs: 'none', sm: 'flex'}} justifyContent="space-between">
-                                <Button onClick={() => setOpenModal(false)} variant="outlined" color="error">
-                                    Cancelar
-                                </Button>
-                                <Button onClick={confirmPurchase} variant="contained" color="primary">
-                                    Pagar con Tarjeta
-                                </Button>
-                            </Box>
-                            <Box mt={3} display={{xs: 'block', sm: 'none'}} justifyContent="space-between">
-                                <Button onClick={() => setOpenModal(false)} variant="outlined" color="error" fullWidth>
-                                    Cancelar
-                                </Button>
-                                <Button onClick={confirmPurchase} variant="contained" color="primary" fullWidth sx={{mt: 1}}>
-                                    Pagar con Tarjeta
-                                </Button>
-                            </Box>
-                        </>
-                    )
-                }
+                {paymentMethod === "mercadopago" && (
+                    <Box mt={3}>
+                        <Button fullWidth onClick={() => setOpenModal(false)} variant="outlined" color="error" sx={{ mb: 2 }}>
+                            Cancelar
+                        </Button>
+                        <Button
+                            fullWidth
+                            onClick={() => {
+                                window.open("https://link.mercadopago.com.uy/emercado", "_blank");
+                                confirmPurchase();
+                            }}
+                            variant="contained"
+                            color="primary"
+                        >
+                            Pagar con Mercado Pago
+                        </Button>
+                    </Box>
+                )}
 
             </Box>
         </Modal >

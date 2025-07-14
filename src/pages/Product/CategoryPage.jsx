@@ -62,7 +62,7 @@ const CategoryPage = () => {
             </Box>
 
             {/* NAVTABS (LG) */}
-            <Box sx={{ width: 600, display: { xs: 'none', lg: 'block', xl: 'none' }, mb: 2 }}>
+            <Box sx={{ width: 'fit-content', display: { xs: 'none', lg: 'block', xl: 'none' }, mb: 2 }}>
                 <Typography variant="h4" gutterBottom fontWeight={600} sx={{ color: 'primary.main' }}>
                     Categorías
                 </Typography>
@@ -83,6 +83,7 @@ const CategoryPage = () => {
                         },
                         '& .Mui-selected': {
                             backgroundColor: 'rgba(255, 255, 255, 0.2)',
+                            color: '#fff'
                         },
                         '& .MuiTab-root:hover': {
                             backgroundColor: 'rgba(255, 255, 255, 0.1)',
@@ -94,6 +95,7 @@ const CategoryPage = () => {
                             key={cat}
                             label={cat.charAt(0).toUpperCase() + cat.slice(1)}
                             value={cat}
+                            sx={{width: 'fit-content', mx: 2}}
                         />
                     ))}
                 </Tabs>
