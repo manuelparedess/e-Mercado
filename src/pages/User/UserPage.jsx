@@ -75,11 +75,11 @@ const UserPage = () => {
 
                 <Divider sx={{ mb: 4, borderColor: '#0f6e33' }} />
 
-                <Grid container spacing={4}>
-                    <Grid item size={{ xs: 12, sm: 6, md: 3 }}>
+                <Grid container spacing={2} justifyContent='space-between'>
+                    <Grid item size={{ xs: 12, sm: 3}}>
                         <Stack direction="row" alignItems="center" spacing={1}>
                             <PersonIcon color="primary" />
-                            <Typography variant="subtitle2" color="text.secondary">
+                            <Typography variant="subtitle2" color="text.secondary" noWrap>
                                 Nombre Completo
                             </Typography>
                         </Stack>
@@ -96,7 +96,7 @@ const UserPage = () => {
                                 />
                             ) : (name || lastname)
                                 ? (
-                                    <Typography variant="body1" mt={0.5}>
+                                    <Typography variant="body1" mt={0.5} noWrap>
                                         {`${name} ${lastname}`}
                                     </Typography>
                                 )
@@ -108,7 +108,7 @@ const UserPage = () => {
                         }
                     </Grid>
                     {isEditing ? (
-                        <Grid item size={{ xs: 12, sm: 6, md: 3 }} sx={{ display: 'flex', alignItems: 'end'}}>
+                        <Grid item size={{ xs: 12, sm: 3}} sx={{ display: 'flex', alignItems: 'end'}}>
                             <TextField
                                 label="Apellido"
                                 name="lastname"
@@ -121,7 +121,7 @@ const UserPage = () => {
                         </Grid>
                     ) : null}
 
-                    <Grid item size={{ xs: 12, sm: 6, md: 'grow' }} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
+                    <Grid item size={{ xs: 12, sm: 6}} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between'}}>
                         <Stack direction="row" alignItems="center" spacing={1}>
                             <MailOutlineIcon color="primary" />
                             <Typography variant="subtitle2" color="text.secondary">
@@ -147,7 +147,7 @@ const UserPage = () => {
                     {/* Address */}
                     {isEditing
                         ? (
-                            <Grid item size={{ xs: 12 }}>
+                            <Grid item size={12}>
                                 <Stack direction="row" alignItems="center" spacing={1}>
                                     <LocationOnIcon color="primary" />
                                     <Typography variant="subtitle2" color="text.secondary">
@@ -180,7 +180,7 @@ const UserPage = () => {
                             </Grid>
 
                         ) : (
-                            <Grid item size={{ xs: 12, md: 6 }}>
+                            <Grid item size={12}>
                                 <Stack direction="row" alignItems="center" spacing={1}>
                                     <LocationOnIcon color="primary" />
                                     <Typography variant="subtitle2" color="text.secondary">
@@ -234,7 +234,6 @@ const UserPage = () => {
                 <Typography variant="caption" color="text.secondary">
                     Datos del usuario generados para fines de demostración. © {new Date().getFullYear()}
                 </Typography>
-                ,
             </Box >
             <Box mt={3} display="flex" justifyContent="center">
                 <Button
