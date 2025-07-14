@@ -43,13 +43,9 @@ const PaymentForm = ({ confirmPurchase, setOpenModal }) => {
         if (error) {
             return;
         } else {
-            confirmPurchase();s
+            confirmPurchase();
         }
     };
-
-
-
-    //Arreglar submit ver q hacer con el boton
 
     return (
         <>
