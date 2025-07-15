@@ -138,7 +138,7 @@ export const AuthProvider = ({ children }) => {
             <Typography variant="h1" fontWeight={800} sx={{color: '#fff'}} gutterBottom>
                 Ups...
             </Typography>
-            <Typography variant="h5" sx={{color: '#fff', width: '50%'}} mb={3}>
+            <Typography variant="h5" sx={{color: '#fff', width: { xs: '80%', md: '50%'}}} mb={3}>
                 Lo siento, el servidor alojado en Render utiliza el plan gratuito, el cual se queda inactivo luego de un tiempo. Por favor, espere unos 30 segundos y vuelva a recargar para que la página se renderice.
             </Typography>
             <Button
