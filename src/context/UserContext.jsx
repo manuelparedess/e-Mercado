@@ -27,6 +27,7 @@ export const UserProvider = ({ children }) => {
         try {
             setError(false);
             await deleteUser();
+            setUser(null);
         } catch (error) {
             setError(error.msg);
         }

@@ -18,6 +18,7 @@ const ConfirmationModal = ({ open, setOpen, option, id = 0 }) => {
         handleDelete();
         setReload(true);
         setOpen(false);
+        navigate('/', { replace: true });
         Swal.fire({
             icon: 'success',
             title: '¡Usuario eliminado!',
